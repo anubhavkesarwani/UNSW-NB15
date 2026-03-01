@@ -8,12 +8,13 @@ chronological integrity and statistical class balance, ensuring reliable model e
 
 **Dataset composition:**
 
-- Total records: 2,540,047 network flows
-- Training set: 1,524,027 records (60%)
-- Validation set: 508,010 records (20%)
-- Test set: 508,010 records (20%)
+- Total records: 2,059,408 network flows (after deduplication)
+- Training set: 1,235,644 records (60%)
+- Validation set: 411,882 records (20%)
+- Test set: 411,882 records (20%)
 - Features: 49 network flow metrics
 - Classes: Binary (normal/attack) + 10 attack categories
+- Duplicates removed: 480,639 exact duplicate records
 
 ## Dataset Attribution
 
@@ -31,11 +32,20 @@ Communications and Information Systems Conference (MilCIS) (pp. 1-6). IEEE.
 **Official dataset:**
 [UNSW-NB15: Network Intrusion Detection Datasets](https://www.unsw.adfa.edu.au/unsw-canberra/academic/school-engineering/school-engineering-research/cybersecurity/UNSW-NB15-Datasets)
 
+## Data Preparation
+
+### Deduplication
+
+The original UNSW-NB15 dataset (2,540,047 records) contained 480,639 exact duplicate records
+(~19% duplication rate). These duplicates were removed before splitting to eliminate potential
+data leakage. The deduplicated dataset (2,059,408 records) was used for all subsequent splits.
+
 ## Splitting Methodology
 
 ### Temporal Stratification
 
-The dataset was split using temporal stratified sampling to balance two competing requirements:
+The deduplicated dataset was split using temporal stratified sampling to balance two competing
+requirements:
 
 1. **Chronological integrity**: Preserve temporal ordering to reflect realistic deployment
    scenarios (train on historical data, test on contemporary data)
@@ -65,15 +75,16 @@ The dataset was split using temporal stratified sampling to balance two competin
 
 | Split | Normal | Attack | Normal % | Attack % | Records |
 | ------- | -------- | -------- | ---------- | ---------- | --------- |
-| Train | 1,331,257 | 192,770 | 87.35% | 12.65% | 1,524,027 |
-| Val | 443,753 | 64,257 | 87.35% | 12.65% | 508,010 |
-| Test | 443,754 | 64,256 | 87.35% | 12.65% | 508,010 |
+| Train | 1,175,858 | 59,786 | 95.16% | 4.84% | 1,235,644 |
+| Val | 391,953 | 19,929 | 95.16% | 4.84% | 411,882 |
+| Test | 391,954 | 19,928 | 95.16% | 4.84% | 411,882 |
 
 **Stratification quality:**
 
 - Label distribution difference: 0.0000-0.0001%
-- Attack category distribution difference: 0.0002%
-- Imbalance ratio (Normal:Attack): 6.91:1 maintained
+- Attack category distribution difference: 0.0003%
+- Imbalance ratio (Normal:Attack): 19.67:1 maintained
+- Data leakage: **ZERO** (verified - no overlapping records across splits)
 
 ## Files
 
@@ -110,7 +121,16 @@ train = pd.read_csv('unsw_nb15_train.csv')
 val = pd.read_csv('unsw_nb15_val.csv')
 test = pd.read_csv('unsw_nb15_test.csv')
 
-# Handle class imbalance in training
+# Recommended: Handle severe class imbalance with ADASYN oversampling
+# (Apply only to training set for honest validation/test evaluation)
+# from imblearn.over_sampling import ADASYN
+# X_train, y_train = ADASYN(sampling_strategy=1.0).fit_resample(
+#     train.drop('label', axis=1), train['label']
+# )
+# train_balanced = X_train.copy()
+# train_balanced['label'] = y_train
+
+# Alternative: Use class weights in model
 from sklearn.ensemble import RandomForestClassifier
 model = RandomForestClassifier(class_weight='balanced')
 ```
@@ -122,15 +142,25 @@ model = RandomForestClassifier(class_weight='balanced')
 - All numeric fields within valid ranges
 - Categorical values normalized (lowercase, trimmed)
 - Consistent data types across splits
+- **No duplicate records** (480,639 duplicates removed from original dataset)
+- **Zero data leakage** (no overlapping records between train/val/test splits)
+
+### Class Imbalance Note
+
+The dataset exhibits severe class imbalance (95.16% normal, 4.84% attack) due to duplicate
+removal prioritizing data integrity. **Recommendation: Apply ADASYN oversampling (1:1 ratio)
+to training set only** to improve model learning without distorting val/test metrics. See
+Usage section for example code.
 
 ## Recommended Evaluation Metrics
 
-Due to 12.65% attack density, do not rely on accuracy alone:
+Due to 4.84% attack density (highly imbalanced), do not rely on accuracy alone:
 
-- F1-Score (weighted)
+- F1-Score (weighted and macro)
 - Precision-Recall curves
-- ROC-AUC
+- ROC-AUC score
 - Per-class precision and recall
+- Matthews Correlation Coefficient (MCC)
 
 ## License
 
