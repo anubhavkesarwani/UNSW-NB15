@@ -1,20 +1,21 @@
-# UNSW-NB15 Train/Val/Test Splits - Temporal Stratified
+# UNSW-NB15 Train/Val/Test Splits - Sequential Temporal
 
 ## Overview
 
 This repository contains the UNSW-NB15 network intrusion detection dataset split into training,
-validation, and test sets using temporal stratified sampling. The methodology preserves both
-chronological integrity and statistical class balance, ensuring reliable model evaluation.
+validation, and test sets using sequential temporal ordering. The methodology prioritizes
+chronological integrity (train on historical data, validate/test on contemporary data),
+reflecting realistic IDS deployment scenarios.
 
 **Dataset composition:**
 
-- Total records: 2,059,408 network flows (after deduplication)
-- Training set: 1,235,644 records (60%)
-- Validation set: 411,882 records (20%)
-- Test set: 411,882 records (20%)
+- Total records: 2,054,316 network flows (after deduplication)
+- Training set: 1,232,589 records (60%)
+- Validation set: 410,863 records (20%)
+- Test set: 410,864 records (20%)
 - Features: 49 network flow metrics
 - Classes: Binary (normal/attack) + 10 attack categories
-- Duplicates removed: 480,639 exact duplicate records
+- Duplicates removed: 477,359 exact duplicate records
 
 ## Dataset Attribution
 
@@ -36,62 +37,70 @@ Communications and Information Systems Conference (MilCIS) (pp. 1-6). IEEE.
 
 ### Deduplication
 
-The original UNSW-NB15 dataset (2,540,047 records) contained 480,639 exact duplicate records
-(~19% duplication rate). These duplicates were removed before splitting to eliminate potential
-data leakage. The deduplicated dataset (2,059,408 records) was used for all subsequent splits.
+The original UNSW-NB15 dataset (2,540,047 records) contained 477,359 exact duplicate records
+(~18.8% duplication rate). These duplicates were removed before splitting to eliminate potential
+data leakage. The deduplicated dataset (2,054,316 records) was used for all subsequent splits.
 
 ## Splitting Methodology
 
-### Temporal Stratification
+### Sequential Temporal Split
 
-The deduplicated dataset was split using temporal stratified sampling to balance two competing
-requirements:
+The deduplicated dataset is split sequentially by Unix timestamp (stime) to preserve
+chronological ordering:
 
-1. **Chronological integrity**: Preserve temporal ordering to reflect realistic deployment
-   scenarios (train on historical data, test on contemporary data)
-2. **Class distribution stability**: Maintain identical class ratios across splits to ensure
-   fair model evaluation
+1. **Train (60%)**: Historical data (1421927377 → 1424229505)
+2. **Validation (20%)**: Recent history (1424229505 → 1424245853)
+3. **Test (20%)**: Current/future data (1424245853 → 1424262068)
+
+This approach reflects realistic IDS deployment where models are trained on historical
+traffic and evaluated on contemporary unseen traffic.
 
 ### Algorithm
 
-#### Step 1: Timeline division
+#### Step 1: Sort by timestamp
 
-- Sort records by Unix timestamp (stime)
-- Divide 648.5-hour timeline into 25 equal windows
+- Sort all records by Unix timestamp (stime) in ascending order
+- Total timeline: 648.5 hours
 
-#### Step 2: Stratified sampling within windows
+#### Step 2: Sequential partitioning
 
-- Stratify by label (0=normal, 1=attack) and attack_cat (10 types)
-- Proportionally sample: 60% train, 20% validation, 20% test
+- Train: Records 0-60% (chronologically earliest)
+- Validation: Records 60-80% (chronologically intermediate)
+- Test: Records 80-100% (chronologically latest)
 
-#### Step 3: Chronological assembly
+#### Step 3: Maintain separation
 
-- Concatenate stratified samples from all windows
-- Preserve temporal scatter across splits
+- No temporal overlap between splits (strictly sequential)
+- Test set represents definitively future/unseen data relative to training
 
 ### Results
 
-**Class distribution (identical across splits):**
+**Class distribution (varies due to temporal clustering of attacks):**
 
 | Split | Normal | Attack | Normal % | Attack % | Records |
 | ------- | -------- | -------- | ---------- | ---------- | --------- |
-| Train | 1,175,858 | 59,786 | 95.16% | 4.84% | 1,235,644 |
-| Val | 391,953 | 19,929 | 95.16% | 4.84% | 411,882 |
-| Test | 391,954 | 19,928 | 95.16% | 4.84% | 411,882 |
+| Original | 1,954,709 | 99,607 | 95.15% | 4.85% | 2,054,316 |
+| Train | 1,202,097 | 30,492 | 97.53% | 2.47% | 1,232,589 |
+| Val | 375,118 | 35,745 | 91.30% | 8.70% | 410,863 |
+| Test | 377,494 | 33,370 | 91.88% | 8.12% | 410,864 |
 
-**Stratification quality:**
+**Temporal distribution characteristics:**
 
-- Label distribution difference: 0.0000-0.0001%
-- Attack category distribution difference: 0.0003%
-- Imbalance ratio (Normal:Attack): 19.67:1 maintained
-- Data leakage: **ZERO** (verified - no overlapping records across splits)
+- Attacks concentrate in later part of timeline (validation/test periods)
+- Training data has lower attack density (2.47%) → requires careful evaluation
+- Validation/Test have higher attack density (8-9%) → more representative of attack scenarios
+- This clustering is **realistic** - reflects how real attacks may occur sporadically
+- Data leakage: **ZERO** (verified - no overlapping records across strictly sequential splits)
 
 ## Files
 
 ```text
-unsw_nb15_train.csv          Training set (1,524,027 records)
-unsw_nb15_val.csv            Validation set (508,010 records)
-unsw_nb15_test.csv           Test set (508,010 records)
+unsw_nb15_train.csv          Training set - historical (1,232,589 records)
+unsw_nb15_val.csv            Validation set - recent (410,863 records)
+unsw_nb15_test.csv           Test set - current/future (410,864 records)
+unsw_nb15.csv                Full cleaned dataset before split (2,054,316 records)
+unsw_nb15_split_report.csv   Detailed split statistics
+unsw_nb15_column_report.csv  Column metadata and properties
 ```
 
 ## Features (49 total)
@@ -142,19 +151,30 @@ model = RandomForestClassifier(class_weight='balanced')
 - All numeric fields within valid ranges
 - Categorical values normalized (lowercase, trimmed)
 - Consistent data types across splits
-- **No duplicate records** (480,639 duplicates removed from original dataset)
+- **No duplicate records** (477,359 duplicates removed from original dataset)
 - **Zero data leakage** (no overlapping records between train/val/test splits)
 
-### Class Imbalance Note
+### Class Imbalance and Temporal Clustering
 
-The dataset exhibits severe class imbalance (95.16% normal, 4.84% attack) due to duplicate
-removal prioritizing data integrity. **Recommendation: Apply ADASYN oversampling (1:1 ratio)
-to training set only** to improve model learning without distorting val/test metrics. See
-Usage section for example code.
+The dataset exhibits severe class imbalance overall (95.15% normal, 4.85% attack).
+Sequential temporal split reveals **attacks cluster in later time periods**:
+
+- **Training set**: 97.53% normal, 2.47% attack (sparse attack signals)
+- **Validation/Test**: ~91% normal, ~8-9% attack (higher attack density)
+
+**Recommendations:**
+
+1. **Training strategy**: Apply ADASYN oversampling (1:1 ratio) to training set only to
+   compensate for attack scarcity in historical data
+2. **Evaluation**: Use stratified validation/test metrics to account for temporal-dependent
+   class distribution
+3. **Model tuning**: Use validation set to monitor for overfitting on attack-rich data
+
+See Usage section for oversampling example code.
 
 ## Recommended Evaluation Metrics
 
-Due to 4.84% attack density (highly imbalanced), do not rely on accuracy alone:
+Due to class imbalance (varying by temporal period), do not rely on accuracy alone:
 
 - F1-Score (weighted and macro)
 - Precision-Recall curves
