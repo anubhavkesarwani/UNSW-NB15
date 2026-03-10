@@ -19,7 +19,7 @@ Dataset source: [UNSW Canberra Cyber Security](https://research.unsw.edu.au/proj
 
 ## Preparation Pipeline
 
-Run via `scripts/prepare_unswnb15_enhanced.py`. Single script, no dependencies beyond
+Run via single Python script, no dependencies beyond
 pandas and numpy.
 
 ### Steps & Justifications
