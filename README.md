@@ -110,6 +110,21 @@ Benign traffic was downsampled to target approximately **33.3%** of final rows w
 | Attack after downsampling | 127,679 |
 | Final benign share | 33.3001% |
 
+### Initial vs Final Class Counts
+
+| Class | Initial Count | Final Count | Description |
+| --- | ---: | ---: | --- |
+| Benign | 2,237,731 | 63,744 | Normal unmalicious flows |
+| Fuzzers | 33,816 | 33,816 | An attack in which the attacker sends large amounts of random data which cause a system to crash and also aim to discover security vulnerabilities in a system. |
+| Analysis | 2,381 | 1,226 | A group that presents a variety of threats that target web applications through ports, emails and scripts. |
+| Backdoor | 1,226 | 4,658 | A technique that aims to bypass security mechanisms by replying to specific constructed client applications. |
+| DoS | 5,980 | 5,971 | Denial of Service is an attempt to overload a computer system's resources with the aim of preventing access to or availability of its data. |
+| Exploits | 42,748 | 42,744 | Are sequences of commands controlling the behaviour of a host through a known vulnerability. |
+| Generic | 19,651 | 19,651 | A method that targets cryptography and causes a collision with each block-cipher. |
+| Reconnaissance | 17,074 | 17,074 | A technique for gathering information about a network host and is also known as a probe. |
+| Shellcode | 4,659 | 2,381 | A malware that penetrates a code to control a victim's host. |
+| Worms | 158 | 158 | Attacks that replicate themselves and spread to other computers. |
+
 ### Final attack distribution
 
 | Attack class | Count | Share |
@@ -197,6 +212,18 @@ Shortfall:
 
 - `DDOS_attack-LOIC-UDP`: 1,725
 - `Brute_Force_-XSS`: 20
+
+### Initial vs Final Family Counts
+
+| Class | Initial Count | Final Count | Description |
+| --- | ---: | ---: | --- |
+| Benign | 17,514,626 | 99,000 | Normal unmalicious flows |
+| BruteForce | 575,194 | 39,352 | A technique that aims to obtain usernames and password credentials by accessing a list of predefined possibilities |
+| Bot | 207,703 | 39,352 | An attack that enables an attacker to remotely control several hijacked computers to perform malicious activities. |
+| DoS | 302,966 | 39,351 | An attempt to overload a computer system's resources with the aim of preventing access to or availability of its data. |
+| DDoS | 1,324,350 | 41,076 | An attempt similar to DoS but has multiple different distributed sources. |
+| Infiltration | 188,152 | 39,351 | An inside attack that sends a malicious file via an email to exploit an application and is followed by a backdoor that scans the network for other vulnerabilities |
+| Web Attacks | 2,538 | 2,518 | A group that includes SQL injections, command injections and unrestricted file uploads |
 
 ### Final class distribution
 
