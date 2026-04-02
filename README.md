@@ -11,6 +11,87 @@ The objective of the process was to produce reproducible, cleaned, deduplicated,
 
 ---
 
+## Methodological Justification
+
+### Rationale for Downsampling
+
+Downsampling was applied to address extreme class-prior imbalance, particularly the dominance of benign traffic and high-volume attack families in CICIDS2018. In heavily imbalanced intrusion datasets, empirical risk minimization can be biased toward majority classes, yielding high aggregate accuracy while under-detecting minority attack modes. This effect is especially problematic when the operational objective is attack sensitivity rather than majority-class fidelity.
+
+The procedure is strictly downsample-only (no oversampling or synthetic generation). In UNSW, benign is downsampled while attack observations are retained; in CICIDS2018, benign and oversubscribed attack classes are downsampled under explicit constraints. This design preserves empirical observations and improves computational tractability while maintaining low-frequency attack evidence.
+
+### Dataset-Specific Sampling Justification
+
+Sampling was specified separately for each dataset because the empirical class structures and operational constraints differ.
+
+### Formal Problem Formulation
+
+Let:
+
+- `C` denote the set of classes.
+- `F` denote the set of families.
+- `n_c` denote the available (cleaned, deduplicated) count for class `c`.
+- `m_c` denote the selected count for class `c` in the final dataset.
+- `N = sum_{c in C} m_c` denote final dataset size.
+- `B` denote the benign class.
+- `S` denote the set of fixed-minority classes with requested lower bounds `r_c`.
+
+All selections satisfy integer and feasibility constraints:
+
+- `m_c in Z_{>=0}`
+- `0 <= m_c <= n_c` (downsample-only; no oversampling)
+
+#### NF-UNSW-NB15-v3
+
+Define total retained attack count as `A = sum_{c != B} n_c`, and set benign-prior target `alpha = 1/3`.
+
+The design objective is to preserve all attack observations while setting benign prevalence near `alpha`:
+
+`m_c = n_c, for all c != B`
+
+`m_B = round((alpha / (1 - alpha)) * A)`
+
+With `alpha = 1/3`, this reduces to `m_B = round(A / 2)` and thus `N = A + m_B ~ 1.5A`. This formulation explicitly maximizes attack retention under a controlled benign prior.
+
+#### NF-CICIDS2018-v3
+
+For CICIDS2018, selection was formulated as constrained class allocation with fixed total size and family-balance pressure.
+
+Primary constraints:
+
+- `sum_c m_c = 300,000` (fixed computational budget),
+- `m_B >= 0.33 * 300,000` (minimum benign support),
+- `m_c >= min(r_c, n_c), for c in S` (minority preservation),
+- `0 <= m_c <= n_c, for all c in C`.
+
+Define attack-family mass:
+
+- `M_f = sum_{c in C_f} m_c`, for attack families `f in F_attack`.
+
+Allocation rule in implementation:
+
+- initialize each family with fixed-minority mass and feasible class caps;
+- iteratively distribute remaining attack budget as evenly as possible across unsaturated families;
+- when a family reaches its cap, remove it from further allocation and continue;
+- split indivisible remainder deterministically.
+
+This is a capped progressive-filling (max-min fairness) allocation under hard feasibility constraints. It yields near-equal family support without violating class availability, and directly suppresses dominance by high-volume families (especially DoS/DDoS) while preserving low-frequency evidence.
+
+### Rationale for Class-to-Family Mapping
+
+Class mapping was retained to support semantic comparability and analytical coherence across datasets with different label granularity and naming conventions. Family-level mapping serves three methodological functions:
+
+1. It reduces nomenclature variance (e.g., class-name heterogeneity for conceptually related attacks).
+2. It increases effective sample support per target category when individual fine-grained classes are sparse.
+3. It provides a defensible cross-dataset abstraction layer for transfer and comparative evaluation.
+
+Mappings were constrained to source-defined categories and explicit project taxonomy decisions documented in repository map files. This ensures traceability and prevents undocumented post hoc relabeling.
+
+### Validity, Scope, and Reproducibility
+
+The resulting datasets are intended for controlled model development and comparative evaluation, not for direct estimation of deployment prevalence. Because resampling modifies class priors, prevalence-sensitive metrics should be interpreted alongside prior-independent measures and class-conditional performance. To preserve auditability, this repository reports both initial and final counts, keeps mapping files explicit, and fixes stochastic operations via a deterministic random seed.
+
+---
+
 ## Shared Processing Protocol
 
 The following procedure was applied in both pipelines.
@@ -114,15 +195,15 @@ Benign traffic was downsampled to target approximately **33.3%** of final rows w
 
 | Class | Initial Count | Final Count | Description |
 | --- | ---: | ---: | --- |
-| Benign | 2,237,731 | 63,744 | Normal unmalicious flows |
+| Benign | 2,222,930 | 63,744 | Normal unmalicious flows |
 | Fuzzers | 33,816 | 33,816 | An attack in which the attacker sends large amounts of random data which cause a system to crash and also aim to discover security vulnerabilities in a system. |
-| Analysis | 2,381 | 1,226 | A group that presents a variety of threats that target web applications through ports, emails and scripts. |
-| Backdoor | 1,226 | 4,658 | A technique that aims to bypass security mechanisms by replying to specific constructed client applications. |
-| DoS | 5,980 | 5,971 | Denial of Service is an attempt to overload a computer system's resources with the aim of preventing access to or availability of its data. |
-| Exploits | 42,748 | 42,744 | Are sequences of commands controlling the behaviour of a host through a known vulnerability. |
+| Analysis | 1,226 | 1,226 | A group that presents a variety of threats that target web applications through ports, emails and scripts. |
+| Backdoor | 4,658 | 4,658 | A technique that aims to bypass security mechanisms by replying to specific constructed client applications. |
+| DoS | 5,971 | 5,971 | Denial of Service is an attempt to overload a computer system's resources with the aim of preventing access to or availability of its data. |
+| Exploits | 42,744 | 42,744 | Are sequences of commands controlling the behaviour of a host through a known vulnerability. |
 | Generic | 19,651 | 19,651 | A method that targets cryptography and causes a collision with each block-cipher. |
 | Reconnaissance | 17,074 | 17,074 | A technique for gathering information about a network host and is also known as a probe. |
-| Shellcode | 4,659 | 2,381 | A malware that penetrates a code to control a victim's host. |
+| Shellcode | 2,381 | 2,381 | A malware that penetrates a code to control a victim's host. |
 | Worms | 158 | 158 | Attacks that replicate themselves and spread to other computers. |
 
 ### Final attack distribution
@@ -217,13 +298,13 @@ Shortfall:
 
 | Class | Initial Count | Final Count | Description |
 | --- | ---: | ---: | --- |
-| Benign | 17,514,626 | 99,000 | Normal unmalicious flows |
-| BruteForce | 575,194 | 39,352 | A technique that aims to obtain usernames and password credentials by accessing a list of predefined possibilities |
-| Bot | 207,703 | 39,352 | An attack that enables an attacker to remotely control several hijacked computers to perform malicious activities. |
-| DoS | 302,966 | 39,351 | An attempt to overload a computer system's resources with the aim of preventing access to or availability of its data. |
-| DDoS | 1,324,350 | 41,076 | An attempt similar to DoS but has multiple different distributed sources. |
-| Infiltration | 188,152 | 39,351 | An inside attack that sends a malicious file via an email to exploit an application and is followed by a backdoor that scans the network for other vulnerabilities |
-| Web Attacks | 2,538 | 2,518 | A group that includes SQL injections, command injections and unrestricted file uploads |
+| Benign | 17,392,754 | 99,000 | Normal unmalicious flows |
+| Brute Force | 287,597 | 39,352 | A technique that aims to obtain usernames and password credentials by accessing a list of predefined possibilities |
+| Bot | 111,460 | 39,352 | An attack that enables an attacker to remotely control several hijacked computers to perform malicious activities. |
+| DoS | 254,296 | 39,351 | An attempt to overload a computer system's resources with the aim of preventing access to or availability of its data. |
+| DDoS | 1,322,625 | 41,076 | An attempt similar to DoS but has multiple different distributed sources. |
+| Infiltration | 115,805 | 39,351 | An inside attack that sends a malicious file via an email to exploit an application and is followed by a backdoor that scans the network for other vulnerabilities |
+| Web Attack | 2,518 | 2,518 | A group that includes SQL injections, command injections and unrestricted file uploads |
 
 ### Final class distribution
 
