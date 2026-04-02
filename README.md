@@ -1,4 +1,4 @@
-# Data Preparation Report for NF-UNSW-NB15-v3 and NF-CICIDS2018-v3
+# Data Preparation Report for NF*v3 datasets
 
 ## Scope
 
@@ -284,3 +284,21 @@ Coverage status: 15 dataset classes mapped, 0 missing keys, 0 extra keys.
 - IANA protocol numbers registry: `https://www.iana.org/assignments/protocol-numbers`
 - RFC 791 (IPv4 header fields): `https://www.rfc-editor.org/rfc/rfc791`
 - RFC 6335 (port namespace and ranges): `https://www.rfc-editor.org/rfc/rfc6335`
+
+---
+
+## Citation
+
+For scholarly use of the NetFlow v3 temporal analysis reference, please cite:
+
+```bibtex
+@misc{luay2025NetFlowDatasetsV3,
+  title = {Temporal Analysis of NetFlow Datasets for Network Intrusion Detection Systems},
+  author = {Majed Luay and Siamak Layeghy and Seyedehfaezeh Hosseininoorbin and Mohanad Sarhan and Nour Moustafa and Marius Portmann},
+  year = {2025},
+  eprint = {2503.04404},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.LG},
+  url = {https://arxiv.org/abs/2503.04404}
+}
+```

@@ -345,7 +345,7 @@
   ],
   "pipeline": {
     "drop_duplicates_applied": true,
-    "balance_50_50_applied": true,
+    "balance_applied": true,
     "drop_columns_applied": true,
     "random_state": 0
   },
@@ -354,7 +354,7 @@
       "rows": 2350609,
       "columns": 55
     },
-    "after_balance_50_50": {
+    "after_balance": {
       "rows": 191423,
       "columns": 55,
       "label_distribution": {
@@ -373,7 +373,7 @@
       ]
     }
   },
-  "balance_50_50": {
+  "balance": {
     "applied": true,
     "random_state": 0,
     "before_counts": {
