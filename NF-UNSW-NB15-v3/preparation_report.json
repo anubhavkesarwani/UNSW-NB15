@@ -2,7 +2,6 @@
   "input_rows": 2365424,
   "input_columns": 55,
   "issues": {
-    "attack_unknown_values": 0,
     "FLOW_START_MILLISECONDS_non_numeric_to_nan": 0,
     "FLOW_START_MILLISECONDS_inf_to_nan": 0,
     "FLOW_END_MILLISECONDS_non_numeric_to_nan": 0,
@@ -236,13 +235,14 @@
     "DST_TO_SRC_IAT_AVG_nan_filled": 0,
     "DST_TO_SRC_IAT_STDDEV_nan_filled": 0,
     "Label_nan_filled": 0,
+    "rows_dropped_residual_dirty": 0,
     "exact_duplicate_rows_detected": 14815,
     "exact_duplicate_rows_removed": 14815
   },
   "notes": [
     "Exact duplicate rows were removed (--drop-duplicates)."
   ],
-  "output_rows": 191423,
+  "output_rows": 255358,
   "output_columns": 51,
   "dtypes": {
     "L4_SRC_PORT": "int64",
@@ -295,10 +295,10 @@
     "DST_TO_SRC_IAT_AVG": "int64",
     "DST_TO_SRC_IAT_STDDEV": "int64",
     "Label": "uint8",
-    "Attack": "category"
+    "Attack": "string"
   },
   "attack_distribution": {
-    "Benign": 63744,
+    "Benign": 127679,
     "Exploits": 42744,
     "Fuzzers": 33816,
     "Generic": 19651,
@@ -310,44 +310,49 @@
     "Worms": 158
   },
   "label_distribution": {
-    "1": 127679,
-    "0": 63744
+    "0": 127679,
+    "1": 127679
   },
   "sources": [
     {
-      "title": "UQ ML-Based NIDS Datasets (NF-UNSW-NB15-v3 metadata and class taxonomy)",
+      "title": "UQ ML-Based NIDS dataset portal (shared NetFlow-v3 resources)",
       "url": "https://staff.itee.uq.edu.au/marius/NIDS_datasets/"
     },
     {
-      "title": "NF-UNSW-NB15-v3 data record (53 features + binary/multi-class labels + temporal description)",
-      "url": "https://researchdata.edu.au/nf-unsw-nb15-v3/3485172"
-    },
-    {
-      "title": "Temporal Analysis of NetFlow Datasets for NIDS (NF3 paper, arXiv:2503.04404)",
+      "title": "Temporal Analysis of NetFlow Datasets for NIDS (NFv3 context)",
       "url": "https://arxiv.org/abs/2503.04404"
     },
     {
-      "title": "NetFlow_v3_Features.csv (feature semantics in local dataset package)",
-      "url": "local://NF-UNSW-NB15-v3/data/NetFlow_v3_Features.csv"
+      "title": "NetFlow v3 feature reference file (local package)",
+      "url": "local://data/NetFlow_v3_Features.csv"
     },
     {
-      "title": "IANA Protocol Numbers (Protocol is 8-bit field; RFC 791 reference)",
+      "title": "IANA Protocol Numbers registry",
       "url": "https://www.iana.org/assignments/protocol-numbers"
     },
     {
-      "title": "RFC 791 (TTL and Protocol are 8-bit IPv4 header fields)",
+      "title": "RFC 791 (IPv4 header fields)",
       "url": "https://www.rfc-editor.org/rfc/rfc791"
     },
     {
-      "title": "RFC 6335 (transport port number namespace/ranges up to 65535)",
+      "title": "RFC 6335 (transport port namespaces/ranges)",
       "url": "https://www.rfc-editor.org/rfc/rfc6335"
     }
   ],
   "pipeline": {
+    "stratified_subsample_applied": false,
+    "subsample_rows": 0,
     "drop_duplicates_applied": true,
     "balance_applied": true,
     "drop_columns_applied": true,
     "random_state": 0
+  },
+  "subsample": {
+    "applied": false,
+    "max_rows": 0,
+    "input_rows": 2365424,
+    "output_rows": 2365424,
+    "note": "Skipped (dataset already within limit or disabled)."
   },
   "steps": {
     "after_clean_and_dedup": {
@@ -355,15 +360,15 @@
       "columns": 55
     },
     "after_balance": {
-      "rows": 191423,
+      "rows": 255358,
       "columns": 55,
       "label_distribution": {
-        "1": 127679,
-        "0": 63744
+        "0": 127679,
+        "1": 127679
       }
     },
     "after_drop_columns": {
-      "rows": 191423,
+      "rows": 255358,
       "columns": 51,
       "dropped_columns": [
         "IPV4_SRC_ADDR",
@@ -380,14 +385,14 @@
       "benign": 2222930,
       "attack": 127679
     },
-    "target_benign_fraction": 0.333,
-    "benign_rows_removed": 2159186,
-    "note": "Benign downsampled to target 33.3% benign share (computed from current attack count, no oversampling).",
+    "target_benign_fraction": 0.5,
+    "benign_rows_removed": 2095251,
+    "note": "Benign downsampled to target 50:50 benign:attack share (computed from current attack count, no oversampling).",
     "after_counts": {
-      "benign": 63744,
+      "benign": 127679,
       "attack": 127679
     },
-    "output_rows": 191423
+    "output_rows": 255358
   },
   "drop_columns": {
     "requested": [
