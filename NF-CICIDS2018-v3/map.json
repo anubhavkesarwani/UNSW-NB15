@@ -7,11 +7,11 @@
   "DoS_attacks-GoldenEye": "DoS",
   "DoS_attacks-Slowloris": "DoS",
   "DoS_attacks-SlowHTTPTest": "DoS",
-  "FTP-BruteForce": "Brute Force",
-  "SSH-Bruteforce": "Brute Force",
-  "Bot": "Bot",
-  "Infilteration": "Infiltration",
-  "Brute_Force_-Web": "Web Attack",
-  "Brute_Force_-XSS": "Web Attack",
-  "SQL_Injection": "Web Attack"
+  "FTP-BruteForce": "BruteForce",
+  "SSH-Bruteforce": "BruteForce",
+  "Bot": "ZeroDay",
+  "Infilteration": "ZeroDay",
+  "Brute_Force_-Web": "BruteForce",
+  "Brute_Force_-XSS": "ZeroDay",
+  "SQL_Injection": "ZeroDay"
 }
