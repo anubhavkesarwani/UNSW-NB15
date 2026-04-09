@@ -1,12 +1,12 @@
 {
-  "Analysis": "Analysis",
+  "Analysis": "Reconnaissance",
   "Benign": "Benign",
   "Backdoor": "Backdoor",
   "DoS": "DoS",
-  "Exploits": "Exploits",
+  "Exploits": "Exploit",
   "Fuzzers": "Fuzzers",
   "Generic": "Generic",
   "Reconnaissance": "Reconnaissance",
-  "Shellcode": "Shellcode",
-  "Worms": "Worms"
+  "Shellcode": "Exploit",
+  "Worms": "Exploit"
 }
