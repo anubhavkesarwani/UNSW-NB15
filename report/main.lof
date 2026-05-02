@@ -1,0 +1,28 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Pearson correlation heatmap of the 73 engineered features. High intra-group correlation blocks (visible along the diagonal) validate the feature grouping hypothesis: features within each semantic group are more correlated with each other than with features from other groups, motivating the use of dedicated sub-encoders per group.}}{15}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Overall flow distribution across known training classes and the held-out Rare class in the CICIDS-2017 subsample.}}{16}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces UMAP projection illustrating the topological separability of the dataset classes.}}{16}{figure.caption.14}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces DAEMON threshold calibration curve showing the relationship between threshold value and F1 score on the training set. The selected threshold $\tau = 0.3028$ (red dashed line) maximises the F1 score.}}{17}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces DAEMON Four-Path Grouped Autoencoder Architecture}}{19}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces OSPREY Sparse Grouped Encoder and Triple-Gate Classification Architecture}}{21}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces TRIAGE Complete End-to-End Real-Time Deployment Pipeline}}{24}{figure.caption.23}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Real-time Web Dashboard Interface for the TRIAGE Pipeline}}{29}{figure.caption.25}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces DAEMON training and validation MSE loss curves over 176 epochs.}}{31}{figure.caption.27}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Distribution of DAEMON composite anomaly scores for benign and attack flows. The vertical dashed line indicates the calibrated threshold $\tau = 0.3028$.}}{32}{figure.caption.29}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Distribution of traffic classes in the OSPREY-accepted test set subset after DAEMON filtering and OOD rejection.}}{33}{figure.caption.31}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces OSPREY confusion matrix on the test set (accepted samples only).}}{33}{figure.caption.33}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces OSPREY one-versus-rest ROC curves for all five traffic classes. AUROC = 0.9996.}}{35}{figure.caption.36}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Distribution of the held-out ``Rare'' unseen attack class in OSPREY's representation space relative to the known training classes.}}{35}{figure.caption.37}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces OSPREY precision-recall curves for all five traffic classes (one-versus-rest). Average Precision (AP) = 0.9980.}}{36}{figure.caption.40}%
+\contentsline {figure}{\numberline {6.8}{\ignorespaces DAEMON leave-one-class-out (LOCO) zero-day detection rates per withheld attack class. Mean DR = 86.55\%, Mean AUROC = 0.9168.}}{37}{figure.caption.41}%
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Unknown Detection Rate comparison between OSPREY (80.96\%) and LightGBM (38.01\%) on the held-out unseen attack class.}}{37}{figure.caption.42}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

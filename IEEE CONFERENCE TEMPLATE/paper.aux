@@ -1,0 +1,110 @@
+\relax 
+\providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
+\@nameuse{bbl@beforestart}
+\citation{luay2025NetFlowDatasetsV3}
+\citation{khosla2020supcon}
+\citation{sarhan2022towards,sarhan2021netflow}
+\citation{denning1987intrusion}
+\citation{ahmad2021nids_survey,ferrag2020nids_dl}
+\citation{chen2016xgboost}
+\citation{liu2019nids_survey,grinsztajn2022tree}
+\babel@aux{english}{}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Machine Learning for Network Intrusion Detection Systems}{1}{}\protected@file@percent }
+\citation{alqatf2018twostage,verkerken2023multistage}
+\citation{alqatf2018twostage}
+\citation{verkerken2023multistage}
+\citation{khosla2020supcon}
+\citation{sattar2022contrastive}
+\citation{yue2022contrastive}
+\citation{liu2019nids_survey}
+\citation{sommer2010outside}
+\citation{ba2016layernorm}
+\citation{he2016resnet}
+\citation{wei2022logitnorm}
+\citation{khosla2020supcon}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Cascaded and Hierarchical Detection}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Contrastive Learning in Security}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Computational Efficiency in NIDS}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {III}Proposed Method}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}System Overview}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Stage~1: SENTRY Binary Gate}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}1}Architecture}{2}{}\protected@file@percent }
+\newlabel{eq:proj}{{1}{2}{}{equation.1}{}}
+\newlabel{eq:resblock}{{2}{2}{}{equation.2}{}}
+\newlabel{eq:embed}{{3}{2}{}{equation.3}{}}
+\newlabel{eq:logitnorm}{{4}{2}{}{equation.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}2}Hybrid Training Objective}{2}{}\protected@file@percent }
+\newlabel{eq:loss}{{5}{2}{}{equation.5}{}}
+\newlabel{eq:supcon}{{6}{2}{}{equation.6}{}}
+\citation{chen2016xgboost}
+\citation{grinsztajn2022tree}
+\citation{sarhan2022towards,sarhan2021netflow}
+\citation{aouini2022nfstream}
+\citation{sharafaldin2018cicids,luay2025NetFlowDatasetsV3}
+\citation{moustafa2015unsw,luay2025NetFlowDatasetsV3}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Detailed left-to-right TRIAGE cascade. A NetFlow-v3 record (55 columns) is transformed to $\mathbf  {x}\in \mathbb  {R}^{45}$ through feature filtering, derived-feature construction, and RobustScaler. Stage~1~(\textbf  {SENTRY}) uses the shown lightweight architecture and routes flows with threshold $p_{\mathrm  {atk}}\geq 0.5$: Benign flows exit immediately (No branch), while Attack-flagged flows are sent to Stage~2~(\textbf  {XGBoost}, trained on attack-only data) for attack-type labelling. Dashed note blocks summarize the Stage~1 hybrid loss and the analytical routing/throughput model used in methodology.}}{3}{}\protected@file@percent }
+\newlabel{fig:architecture}{{1}{3}{}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Stage~2: XGBoost Multiclass Classifier}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Cascade Routing and Throughput Model}{3}{}\protected@file@percent }
+\newlabel{eq:flagged}{{7}{3}{}{equation.7}{}}
+\newlabel{eq:throughput}{{8}{3}{}{equation.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Feature Engineering}{3}{}\protected@file@percent }
+\newlabel{sec:feat}{{\mbox  {III-E}}{3}{}{subsection.3.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Experimental Setup}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Datasets and Preprocessing}{3}{}\protected@file@percent }
+\citation{loshchilov2019adamw}
+\citation{loshchilov2017sgdr}
+\citation{chicco2020mcc}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Training Configuration}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Evaluation Metrics}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {V}Results and Discussion}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}SENTRY Binary Classifier Performance}{4}{}\protected@file@percent }
+\newlabel{sec:s1}{{\mbox  {V-A}}{4}{}{subsection.5.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces TRIAGE Pipeline Performance by Stage}}{4}{}\protected@file@percent }
+\newlabel{tab:e2e}{{I}{4}{}{table.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Comparison with Flat Multiclass Baselines (Identical Splits and Features)}}{4}{}\protected@file@percent }
+\newlabel{tab:baseline}{{II}{4}{}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Performance and Baseline Comparison of End-to-End Performance}{4}{}\protected@file@percent }
+\newlabel{sec:e2e}{{\mbox  {V-B}}{4}{}{subsection.5.2}{}}
+\citation{sommer2010outside}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces End-to-end confusion matrices on the full test sets (absolute counts).}}{5}{}\protected@file@percent }
+\newlabel{fig:cm_e2e}{{2}{5}{}{figure.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Empirical Throughput: TRIAGE vs.\ XGBoost}}{5}{}\protected@file@percent }
+\newlabel{tab:throughput}{{III}{5}{}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Ablation: Supervised Contrastive Loss}{5}{}\protected@file@percent }
+\newlabel{sec:ablation}{{\mbox  {V-C}}{5}{}{subsection.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Limitations}{5}{}\protected@file@percent }
+\newlabel{sec:limit}{{\mbox  {V-D}}{5}{}{subsection.5.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Ablation: Loss Component Contribution to SENTRY}}{5}{}\protected@file@percent }
+\newlabel{tab:ablation}{{IV}{5}{}{table.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{5}{}\protected@file@percent }
+\bibstyle{IEEEtran}
+\bibdata{references}
+\bibcite{luay2025NetFlowDatasetsV3}{1}
+\bibcite{khosla2020supcon}{2}
+\bibcite{sarhan2022towards}{3}
+\bibcite{sarhan2021netflow}{4}
+\bibcite{denning1987intrusion}{5}
+\bibcite{ahmad2021nids_survey}{6}
+\bibcite{ferrag2020nids_dl}{7}
+\bibcite{chen2016xgboost}{8}
+\bibcite{liu2019nids_survey}{9}
+\bibcite{grinsztajn2022tree}{10}
+\bibcite{alqatf2018twostage}{11}
+\bibcite{verkerken2023multistage}{12}
+\bibcite{sattar2022contrastive}{13}
+\bibcite{yue2022contrastive}{14}
+\bibcite{sommer2010outside}{15}
+\bibcite{ba2016layernorm}{16}
+\bibcite{he2016resnet}{17}
+\bibcite{wei2022logitnorm}{18}
+\bibcite{aouini2022nfstream}{19}
+\bibcite{sharafaldin2018cicids}{20}
+\bibcite{moustafa2015unsw}{21}
+\bibcite{loshchilov2019adamw}{22}
+\bibcite{loshchilov2017sgdr}{23}
+\bibcite{chicco2020mcc}{24}
+\@writefile{toc}{\contentsline {section}{References}{6}{}\protected@file@percent }
+\gdef \@abspage@last{6}

@@ -1,0 +1,609 @@
+ >>> Global seed set to: 0
+Rows: 150,000   Columns: 67   Total cells: 10,050,000
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 150000 entries, 0 to 149999
+Data columns (total 66 columns):
+ #   Column                       Non-Null Count   Dtype
+---  ------                       --------------   -----
+ 0   destination_port             150000 non-null  int64
+ 1   flow_duration                150000 non-null  int64
+ 2   total_fwd_packets            150000 non-null  int64
+ 3   total_backward_packets       150000 non-null  int64
+ 4   total_length_of_fwd_packets  150000 non-null  int64
+ 5   total_length_of_bwd_packets  150000 non-null  int64
+ 6   fwd_packet_length_max        150000 non-null  int64
+ 7   fwd_packet_length_min        150000 non-null  int64
+ 8   fwd_packet_length_mean       150000 non-null  float64
+ 9   fwd_packet_length_std        150000 non-null  float64
+ 10  bwd_packet_length_max        150000 non-null  int64
+ 11  bwd_packet_length_min        150000 non-null  int64
+ 12  bwd_packet_length_mean       150000 non-null  float64
+ 13  bwd_packet_length_std        150000 non-null  float64
+ 14  flow_bytes_s                 150000 non-null  float64
+ 15  flow_packets_s               150000 non-null  float64
+ 16  flow_iat_mean                150000 non-null  float64
+ 17  flow_iat_std                 150000 non-null  float64
+ 18  flow_iat_max                 150000 non-null  int64
+ 19  flow_iat_min                 150000 non-null  int64
+ 20  fwd_iat_total                150000 non-null  int64
+ 21  fwd_iat_mean                 150000 non-null  float64
+ 22  fwd_iat_std                  150000 non-null  float64
+ 23  fwd_iat_max                  150000 non-null  int64
+ 24  fwd_iat_min                  150000 non-null  int64
+ 25  bwd_iat_total                150000 non-null  int64
+ 26  bwd_iat_mean                 150000 non-null  float64
+ 27  bwd_iat_std                  150000 non-null  float64
+ 28  bwd_iat_max                  150000 non-null  int64
+ 29  bwd_iat_min                  150000 non-null  int64
+ 30  fwd_psh_flags                150000 non-null  int64
+ 31  fwd_urg_flags                150000 non-null  int64
+ 32  fwd_header_length            150000 non-null  int64
+ 33  bwd_header_length            150000 non-null  int64
+ 34  fwd_packets_s                150000 non-null  float64
+ 35  bwd_packets_s                150000 non-null  float64
+ 36  min_packet_length            150000 non-null  int64
+ 37  max_packet_length            150000 non-null  int64
+ 38  packet_length_mean           150000 non-null  float64
+ 39  packet_length_std            150000 non-null  float64
+ 40  packet_length_variance       150000 non-null  float64
+ 41  fin_flag_count               150000 non-null  int64
+ 42  rst_flag_count               150000 non-null  int64
+ 43  psh_flag_count               150000 non-null  int64
+ 44  ack_flag_count               150000 non-null  int64
+ 45  urg_flag_count               150000 non-null  int64
+ 46  ece_flag_count               150000 non-null  int64
+ 47  down_up_ratio                150000 non-null  int64
+ 48  average_packet_size          150000 non-null  float64
+ 49  avg_fwd_segment_size         150000 non-null  float64
+ 50  avg_bwd_segment_size         150000 non-null  float64
+ 51  subflow_fwd_bytes            150000 non-null  int64
+ 52  subflow_bwd_bytes            150000 non-null  int64
+ 53  init_win_bytes_forward       150000 non-null  int64
+ 54  init_win_bytes_backward      150000 non-null  int64
+ 55  act_data_pkt_fwd             150000 non-null  int64
+ 56  min_seg_size_forward         150000 non-null  int64
+ 57  active_mean                  150000 non-null  float64
+ 58  active_std                   150000 non-null  float64
+ 59  active_max                   150000 non-null  int64
+ 60  active_min                   150000 non-null  int64
+ 61  idle_mean                    150000 non-null  float64
+ 62  idle_std                     150000 non-null  float64
+ 63  idle_max                     150000 non-null  int64
+ 64  idle_min                     150000 non-null  int64
+ 65  Attack                       150000 non-null  object
+dtypes: float64(24), int64(41), object(1)
+memory usage: 75.5+ MB
+Summary statistics:
+Missing values : 0
+Infinite values: 0
+Using upstream dataset as-is: 150,000 rows
+attack_type
+BENIGN         50393
+DoS            45115
+DDoS           24118
+Port Scan      17086
+Brute Force     9150
+Unseen          4138
+Name: count, dtype: int64
+Log1p applied to 29/29 target features.
+Engineered 8 ratio features: ['fwd_bwd_pkt_ratio', 'fwd_bwd_bytes_ratio', 'fwd_bwd_pktlen_ratio', 'fwd_bwd_iat_ratio', 'pkt_per_sec', 'bytes_per_pkt', 'flag_density', 'win_ratio']
+Total numeric features after engineering: 73
+Memory before downcasting: 63.51 MB
+Memory after  downcasting: 42.92 MB  (32.4% reduction)
+Feature set: 73 numeric features
+Feature selection (mRMR) will be performed post-split on training data only.
+
+Unseen Holdout: 4,138 Rare samples reserved
+Classification pool (Rare excluded): 145,862 rows
+
+After undersampling: 49,150 rows (known classes only)
+attack_type
+BENIGN         10000
+DoS            10000
+DDoS           10000
+Port Scan      10000
+Brute Force     9150
+Train: 34,405  Val: 7,372  Test: 7,373
+
+Computing mRMR ranking (training data only)...
+mRMR ranked 73 features
+Top 10 mRMR features (ranking):
+['flag_density', 'fin_flag_count', 'win_ratio', 'bytes_per_pkt', 'flow_iat_std', 'bwd_packets_s', 'idle_min', 'pkt_per_sec', 'flow_iat_max', 'average_packet_size']
+
+Feature selection: hardcoded k = 51 (~70% of 73 total features)
+
+mRMR-selected feature set (51 features):
+['flag_density', 'fin_flag_count', 'win_ratio', 'bytes_per_pkt', 'flow_iat_std', 'bwd_packets_s', 'idle_min', 'pkt_per_sec', 'flow_iat_max', 'average_packet_size', 'fwd_iat_mean', 'flow_packets_s', 'fwd_iat_max', 'fwd_packets_s', 'min_seg_size_forward', 'flow_duration', 'fwd_iat_total', 'flow_iat_mean', 'packet_length_mean', 'bwd_packet_length_mean', 'psh_flag_count', 'fwd_header_length', 'avg_bwd_segment_size', 'packet_length_std', 'bwd_packet_length_min', 'total_length_of_fwd_packets', 'idle_max', 'fwd_iat_std', 'bwd_packet_length_std', 'subflow_fwd_bytes', 'idle_mean', 'bwd_packet_length_max', 'max_packet_length', 'flow_bytes_s', 'init_win_bytes_forward', 'min_packet_length', 'bwd_iat_total', 'init_win_bytes_backward', 'bwd_iat_max', 'active_mean', 'bwd_iat_std', 'ack_flag_count', 'bwd_iat_mean', 'active_max', 'bwd_header_length', 'packet_length_variance', 'fwd_psh_flags', 'destination_port', 'fwd_bwd_pkt_ratio', 'fwd_bwd_bytes_ratio', 'total_backward_packets']
+
+Pruned feature sets applied:
+  Train: (34405, 51)  Val: (7372, 51)  Test: (7373, 51)
+  Unseen holdout: (4138, 51)
+Applying SMOTE to: ['Brute Force']
+Final split — Train (post-SMOTE): 35,000  Val: 7,372  Test: 7,373
+LightGBM baseline params (fixed, no search): {'learning_rate': 0.05, 'num_leaves': 63, 'min_data_in_leaf': 20}
+LightGBM (multi-class) — Training time: 8.26s
+  Best iteration:   104 / 500
+  Params: {'learning_rate': 0.05, 'num_leaves': 63, 'min_data_in_leaf': 20}
+
+LightGBM Top-20 Feature Importances (Gain):
+           destination_port : 3664.00
+                pkt_per_sec : 2688.00
+     init_win_bytes_forward : 1832.00
+              bwd_packets_s : 1422.00
+    init_win_bytes_backward : 1393.00
+                  win_ratio : 1369.00
+               flow_iat_max : 1258.00
+              bytes_per_pkt : 1215.00
+               flow_bytes_s : 1075.00
+               fwd_iat_mean : 1071.00
+          fwd_header_length : 1033.00
+  total_length_of_fwd_packets : 1004.00
+               flag_density : 947.00
+               flow_iat_std : 742.00
+        average_packet_size : 735.00
+                fwd_iat_max : 677.00
+              fwd_packets_s : 676.00
+                fwd_iat_std : 635.00
+              flow_iat_mean : 611.00
+        fwd_bwd_bytes_ratio : 590.00
+OSPREY device: cuda
+OSPREY Hyperparameter Search
+Candidates: 8
+========================================================================
+
+Candidate: hidden=(128, 64), embed=16, groups=4, lr=0.001
+  Epoch 01 | train_loss=3.57462 | val_composite=2.89931  <- best
+  Epoch 02 | train_loss=2.84252 | val_composite=2.64186  <- best
+  Epoch 03 | train_loss=2.58224 | val_composite=2.45421  <- best
+  Epoch 04 | train_loss=2.39117 | val_composite=2.29011  <- best
+  Epoch 05 | train_loss=2.21006 | val_composite=2.10867  <- best
+  Epoch 06 | train_loss=2.03352 | val_composite=1.95736  <- best
+  Epoch 07 | train_loss=1.89322 | val_composite=1.82027  <- best
+  Epoch 08 | train_loss=1.73019 | val_composite=1.63816  <- best
+  Epoch 09 | train_loss=1.53589 | val_composite=1.44465  <- best
+  Epoch 10 | train_loss=1.33091 | val_composite=1.27879  <- best
+  Epoch 11 | train_loss=1.08336 | val_composite=1.02464  <- best
+  Epoch 12 | train_loss=0.76935 | val_composite=0.83296  <- best
+  Epoch 13 | train_loss=0.47720 | val_composite=0.70124  <- best
+  Epoch 15 | train_loss=0.20062 | val_composite=0.81386
+  Early stopping at epoch 18 (patience=5)
+  -> val_ce=0.70124  <- best
+
+Candidate: hidden=(128, 64), embed=16, groups=4, lr=0.0005
+  Epoch 01 | train_loss=3.81697 | val_composite=3.10836  <- best
+  Epoch 02 | train_loss=3.05625 | val_composite=2.81407  <- best
+  Epoch 03 | train_loss=2.82797 | val_composite=2.68895  <- best
+  Epoch 04 | train_loss=2.66922 | val_composite=2.56161  <- best
+  Epoch 05 | train_loss=2.56150 | val_composite=2.47678  <- best
+  Epoch 06 | train_loss=2.47558 | val_composite=2.38640  <- best
+  Epoch 07 | train_loss=2.36675 | val_composite=2.30471  <- best
+  Epoch 08 | train_loss=2.28461 | val_composite=2.22929  <- best
+  Epoch 09 | train_loss=2.19010 | val_composite=2.12416  <- best
+  Epoch 10 | train_loss=2.10611 | val_composite=2.05957  <- best
+  Epoch 11 | train_loss=2.02440 | val_composite=1.97796  <- best
+  Epoch 12 | train_loss=1.95282 | val_composite=1.91633  <- best
+  Epoch 13 | train_loss=1.87775 | val_composite=1.83471  <- best
+  Epoch 14 | train_loss=1.80247 | val_composite=1.76793  <- best
+  Epoch 15 | train_loss=1.71328 | val_composite=1.68019  <- best
+  Epoch 16 | train_loss=1.62535 | val_composite=1.60417  <- best
+  Epoch 17 | train_loss=1.53372 | val_composite=1.52527  <- best
+  Epoch 18 | train_loss=1.44390 | val_composite=1.44841  <- best
+  Epoch 19 | train_loss=1.33313 | val_composite=1.35557  <- best
+  Epoch 20 | train_loss=1.21739 | val_composite=1.28329  <- best
+  Epoch 21 | train_loss=1.09407 | val_composite=1.22015  <- best
+  Epoch 22 | train_loss=0.96577 | val_composite=1.11507  <- best
+  Epoch 23 | train_loss=0.80623 | val_composite=1.02858  <- best
+  Epoch 24 | train_loss=0.63546 | val_composite=0.96734  <- best
+  Epoch 25 | train_loss=0.47255 | val_composite=0.97520
+  Epoch 26 | train_loss=0.30825 | val_composite=0.90114  <- best
+  Epoch 30 | train_loss=0.10792 | val_composite=1.03611
+  -> val_ce=0.90114
+
+Candidate: hidden=(128, 64), embed=32, groups=4, lr=0.001
+  Epoch 01 | train_loss=3.50290 | val_composite=2.86429  <- best
+  Epoch 02 | train_loss=2.80895 | val_composite=2.66570  <- best
+  Epoch 03 | train_loss=2.55564 | val_composite=2.41980  <- best
+  Epoch 04 | train_loss=2.34617 | val_composite=2.27112  <- best
+  Epoch 05 | train_loss=2.17782 | val_composite=2.07559  <- best
+  Epoch 06 | train_loss=1.99427 | val_composite=1.95180  <- best
+  Epoch 07 | train_loss=1.83006 | val_composite=1.74616  <- best
+  Epoch 08 | train_loss=1.66049 | val_composite=1.60025  <- best
+  Epoch 09 | train_loss=1.47030 | val_composite=1.40784  <- best
+  Epoch 10 | train_loss=1.22622 | val_composite=1.21457  <- best
+  Epoch 11 | train_loss=0.96451 | val_composite=0.94558  <- best
+  Epoch 12 | train_loss=0.62925 | val_composite=0.69781  <- best
+  Epoch 13 | train_loss=0.33512 | val_composite=0.62047  <- best
+  Epoch 14 | train_loss=0.18131 | val_composite=0.54279  <- best
+  Epoch 15 | train_loss=0.14080 | val_composite=0.58196
+  Early stopping at epoch 19 (patience=5)
+  -> val_ce=0.54279  <- best
+
+Candidate: hidden=(128, 64), embed=32, groups=4, lr=0.0005
+  Epoch 01 | train_loss=3.76795 | val_composite=3.09546  <- best
+  Epoch 02 | train_loss=3.04440 | val_composite=2.81153  <- best
+  Epoch 03 | train_loss=2.79116 | val_composite=2.63489  <- best
+  Epoch 04 | train_loss=2.63887 | val_composite=2.54427  <- best
+  Epoch 05 | train_loss=2.52063 | val_composite=2.43965  <- best
+  Epoch 06 | train_loss=2.41455 | val_composite=2.37273  <- best
+  Epoch 07 | train_loss=2.33154 | val_composite=2.27839  <- best
+  Epoch 08 | train_loss=2.23712 | val_composite=2.17871  <- best
+  Epoch 09 | train_loss=2.14390 | val_composite=2.11138  <- best
+  Epoch 10 | train_loss=2.06476 | val_composite=2.02818  <- best
+  Epoch 11 | train_loss=1.98583 | val_composite=1.95372  <- best
+  Epoch 12 | train_loss=1.90341 | val_composite=1.86944  <- best
+  Epoch 13 | train_loss=1.82629 | val_composite=1.82243  <- best
+  Epoch 14 | train_loss=1.74947 | val_composite=1.71141  <- best
+  Epoch 15 | train_loss=1.66428 | val_composite=1.63286  <- best
+  Epoch 16 | train_loss=1.57080 | val_composite=1.55841  <- best
+  Epoch 17 | train_loss=1.47926 | val_composite=1.49126  <- best
+  Epoch 18 | train_loss=1.37228 | val_composite=1.39590  <- best
+  Epoch 19 | train_loss=1.26270 | val_composite=1.34356  <- best
+  Epoch 20 | train_loss=1.13670 | val_composite=1.20114  <- best
+  Epoch 21 | train_loss=1.01138 | val_composite=1.09979  <- best
+  Epoch 22 | train_loss=0.86226 | val_composite=0.99887  <- best
+  Epoch 23 | train_loss=0.69168 | val_composite=0.92380  <- best
+  Epoch 24 | train_loss=0.52663 | val_composite=0.83380  <- best
+  Epoch 25 | train_loss=0.35962 | val_composite=0.69763  <- best
+  Epoch 26 | train_loss=0.23985 | val_composite=0.69581  <- best
+  Epoch 27 | train_loss=0.16559 | val_composite=0.65106  <- best
+  Epoch 30 | train_loss=0.09056 | val_composite=0.75839
+  -> val_ce=0.65106
+
+Candidate: hidden=(256, 128, 64), embed=16, groups=4, lr=0.001
+  Epoch 01 | train_loss=3.61811 | val_composite=2.90169  <- best
+  Epoch 02 | train_loss=2.83019 | val_composite=2.66718  <- best
+  Epoch 03 | train_loss=2.60568 | val_composite=2.50466  <- best
+  Epoch 04 | train_loss=2.42522 | val_composite=2.35797  <- best
+  Epoch 05 | train_loss=2.23428 | val_composite=2.11338  <- best
+  Epoch 06 | train_loss=2.06562 | val_composite=1.98904  <- best
+  Epoch 07 | train_loss=1.92037 | val_composite=1.86102  <- best
+  Epoch 08 | train_loss=1.76276 | val_composite=1.69446  <- best
+  Epoch 09 | train_loss=1.56118 | val_composite=1.57531  <- best
+  Epoch 10 | train_loss=1.34905 | val_composite=1.38738  <- best
+  Epoch 11 | train_loss=1.09181 | val_composite=1.20677  <- best
+  Epoch 12 | train_loss=0.78582 | val_composite=0.90652  <- best
+  Epoch 13 | train_loss=0.42620 | val_composite=0.74701  <- best
+  Epoch 15 | train_loss=0.15381 | val_composite=0.80268
+  Early stopping at epoch 18 (patience=5)
+  -> val_ce=0.74701
+
+Candidate: hidden=(256, 128, 64), embed=16, groups=4, lr=0.0005
+  Epoch 01 | train_loss=3.53989 | val_composite=2.96804  <- best
+  Epoch 02 | train_loss=2.92273 | val_composite=2.75299  <- best
+  Epoch 03 | train_loss=2.74788 | val_composite=2.63690  <- best
+  Epoch 04 | train_loss=2.61368 | val_composite=2.54139  <- best
+  Epoch 05 | train_loss=2.52006 | val_composite=2.46346  <- best
+  Epoch 06 | train_loss=2.43530 | val_composite=2.41548  <- best
+  Epoch 07 | train_loss=2.34992 | val_composite=2.31458  <- best
+  Epoch 08 | train_loss=2.26218 | val_composite=2.23909  <- best
+  Epoch 09 | train_loss=2.17422 | val_composite=2.12403  <- best
+  Epoch 10 | train_loss=2.09341 | val_composite=2.08190  <- best
+  Epoch 11 | train_loss=2.00048 | val_composite=1.97796  <- best
+  Epoch 12 | train_loss=1.93795 | val_composite=1.89841  <- best
+  Epoch 13 | train_loss=1.85428 | val_composite=1.81234  <- best
+  Epoch 14 | train_loss=1.77310 | val_composite=1.72761  <- best
+  Epoch 15 | train_loss=1.68429 | val_composite=1.65562  <- best
+  Epoch 16 | train_loss=1.58255 | val_composite=1.57502  <- best
+  Epoch 17 | train_loss=1.49071 | val_composite=1.50455  <- best
+  Epoch 18 | train_loss=1.39475 | val_composite=1.40080  <- best
+  Epoch 19 | train_loss=1.26897 | val_composite=1.29062  <- best
+  Epoch 20 | train_loss=1.13347 | val_composite=1.19013  <- best
+  Epoch 21 | train_loss=0.99014 | val_composite=1.13146  <- best
+  Epoch 22 | train_loss=0.84504 | val_composite=1.02432  <- best
+  Epoch 23 | train_loss=0.69638 | val_composite=0.89439  <- best
+  Epoch 24 | train_loss=0.50805 | val_composite=0.80511  <- best
+  Epoch 25 | train_loss=0.34078 | val_composite=0.71806  <- best
+  Epoch 26 | train_loss=0.22396 | val_composite=0.63023  <- best
+  Epoch 30 | train_loss=0.09899 | val_composite=0.65954
+  -> val_ce=0.63023
+
+Candidate: hidden=(256, 128, 64), embed=32, groups=4, lr=0.001
+  Epoch 01 | train_loss=3.61078 | val_composite=2.96019  <- best
+  Epoch 02 | train_loss=2.82955 | val_composite=2.64042  <- best
+  Epoch 03 | train_loss=2.57560 | val_composite=2.44219  <- best
+  Epoch 04 | train_loss=2.36047 | val_composite=2.28074  <- best
+  Epoch 05 | train_loss=2.19062 | val_composite=2.09481  <- best
+  Epoch 06 | train_loss=2.00665 | val_composite=1.92161  <- best
+  Epoch 07 | train_loss=1.85826 | val_composite=1.76142  <- best
+  Epoch 08 | train_loss=1.67849 | val_composite=1.58101  <- best
+  Epoch 09 | train_loss=1.47963 | val_composite=1.42597  <- best
+  Epoch 10 | train_loss=1.24831 | val_composite=1.21134  <- best
+  Epoch 11 | train_loss=0.98208 | val_composite=1.16029  <- best
+  Epoch 12 | train_loss=0.67795 | val_composite=0.70112  <- best
+  Epoch 15 | train_loss=0.16504 | val_composite=0.94392
+  Early stopping at epoch 17 (patience=5)
+  -> val_ce=0.70112
+
+Candidate: hidden=(256, 128, 64), embed=32, groups=4, lr=0.0005
+  Epoch 01 | train_loss=3.70598 | val_composite=3.06697  <- best
+  Epoch 02 | train_loss=3.00429 | val_composite=2.79745  <- best
+  Epoch 03 | train_loss=2.76231 | val_composite=2.62956  <- best
+  Epoch 04 | train_loss=2.62254 | val_composite=2.52007  <- best
+  Epoch 05 | train_loss=2.52326 | val_composite=2.46824  <- best
+  Epoch 06 | train_loss=2.43495 | val_composite=2.35914  <- best
+  Epoch 07 | train_loss=2.34928 | val_composite=2.30291  <- best
+  Epoch 08 | train_loss=2.25653 | val_composite=2.21924  <- best
+  Epoch 09 | train_loss=2.16366 | val_composite=2.14096  <- best
+  Epoch 10 | train_loss=2.08601 | val_composite=2.05461  <- best
+  Epoch 11 | train_loss=2.00886 | val_composite=2.01500  <- best
+  Epoch 12 | train_loss=1.93291 | val_composite=1.89443  <- best
+  Epoch 13 | train_loss=1.84934 | val_composite=1.82881  <- best
+  Epoch 14 | train_loss=1.76536 | val_composite=1.76026  <- best
+  Epoch 15 | train_loss=1.68064 | val_composite=1.70075  <- best
+  Epoch 16 | train_loss=1.58180 | val_composite=1.59208  <- best
+  Epoch 17 | train_loss=1.47877 | val_composite=1.49608  <- best
+  Epoch 18 | train_loss=1.37863 | val_composite=1.44706  <- best
+  Epoch 19 | train_loss=1.24846 | val_composite=1.37769  <- best
+  Epoch 20 | train_loss=1.11733 | val_composite=1.26084  <- best
+  Epoch 21 | train_loss=0.95362 | val_composite=1.21654  <- best
+  Epoch 22 | train_loss=0.80085 | val_composite=1.11197  <- best
+  Epoch 23 | train_loss=0.62734 | val_composite=0.98833  <- best
+  Epoch 25 | train_loss=0.28823 | val_composite=0.82309  <- best
+  Epoch 30 | train_loss=0.08758 | val_composite=0.96356
+  Early stopping at epoch 30 (patience=5)
+  -> val_ce=0.82309
+
+Best OSPREY params: {'hidden_dims': (128, 64), 'embed_dim': 32, 'num_groups': 4, 'lr': 0.001}
+Best val CE: 0.54279
+Search time: 393.46s
+
+Top configurations:
+   hidden_dims  embed_dim  num_groups       lr   val_ce
+     (128, 64)         32           4 0.001000 0.542788
+(256, 128, 64)         16           4 0.000500 0.630229
+     (128, 64)         32           4 0.000500 0.651065
+(256, 128, 64)         32           4 0.001000 0.701122
+     (128, 64)         16           4 0.001000 0.701242
+  Epoch 01 | train_loss=3.60602 | val_composite=2.92124  <- best
+  Epoch 02 | train_loss=2.81729 | val_composite=2.60822  <- best
+  Epoch 03 | train_loss=2.55726 | val_composite=2.44068  <- best
+  Epoch 04 | train_loss=2.37106 | val_composite=2.26896  <- best
+  Epoch 05 | train_loss=2.19588 | val_composite=2.11467  <- best
+  Epoch 06 | train_loss=2.02541 | val_composite=1.93629  <- best
+  Epoch 07 | train_loss=1.85358 | val_composite=1.76788  <- best
+  Epoch 08 | train_loss=1.68280 | val_composite=1.62624  <- best
+  Epoch 09 | train_loss=1.48179 | val_composite=1.44386  <- best
+  Epoch 10 | train_loss=1.26195 | val_composite=1.25272  <- best
+  Epoch 11 | train_loss=1.02387 | val_composite=1.03612  <- best
+  Epoch 12 | train_loss=0.70426 | val_composite=0.78974  <- best
+  Epoch 13 | train_loss=0.37739 | val_composite=0.65710  <- best
+  Epoch 15 | train_loss=0.15311 | val_composite=0.61753  <- best
+  Epoch 20 | train_loss=0.09875 | val_composite=0.73659
+  Epoch 25 | train_loss=0.06600 | val_composite=0.78382
+  Early stopping at epoch 25 (patience=10)
+OSPREY (multi-class) - Training time: 45.28s
+  Params: {'hidden_dims': (128, 64), 'embed_dim': 32, 'num_groups': 4, 'lr': 0.001}
+  [Youden-J] energy:  thr=-26.2642  TPR=0.886  FPR_known=0.029
+  [Youden-J] entropy: thr=0.0005  TPR=0.820  FPR_known=0.044
+  [Youden-J] cosine:  thr=0.6354  TPR=0.907  FPR_known=0.037
+Youden-calibrated thresholds (val_known vs column-permuted near-OOD):
+  E_thr=-26.2642  H_thr=0.0005  cos_thr=0.6354
+Multi-class CV (LightGBM + OSPREY): 100% 5/5 [03:51<00:00, 46.70s/it]  Epoch 01 | train_loss=3.57864 | val_composite=2.84748  <- best
+  Epoch 02 | train_loss=2.77473 | val_composite=2.55752  <- best
+  Epoch 03 | train_loss=2.51464 | val_composite=2.37774  <- best
+  Epoch 04 | train_loss=2.34253 | val_composite=2.23519  <- best
+  Epoch 05 | train_loss=2.15487 | val_composite=2.05797  <- best
+  Epoch 06 | train_loss=1.98725 | val_composite=1.91956  <- best
+  Epoch 07 | train_loss=1.82936 | val_composite=1.75509  <- best
+  Epoch 08 | train_loss=1.66038 | val_composite=1.58255  <- best
+  Epoch 09 | train_loss=1.45860 | val_composite=1.38656  <- best
+  Epoch 10 | train_loss=1.24858 | val_composite=1.17920  <- best
+  Epoch 11 | train_loss=0.97663 | val_composite=0.93728  <- best
+  Epoch 12 | train_loss=0.66844 | val_composite=0.62055  <- best
+  Epoch 13 | train_loss=0.37097 | val_composite=0.52658  <- best
+  Epoch 15 | train_loss=0.17187 | val_composite=0.60633
+  Early stopping at epoch 18 (patience=5)
+  [Youden-J] energy:  thr=-27.3224  TPR=0.939  FPR_known=0.045
+  [Youden-J] entropy: thr=0.0004  TPR=0.816  FPR_known=0.042
+  [Youden-J] cosine:  thr=0.7639  TPR=0.950  FPR_known=0.053
+  Epoch 01 | train_loss=3.53721 | val_composite=2.87706  <- best
+  Epoch 02 | train_loss=2.81948 | val_composite=2.59757  <- best
+  Epoch 03 | train_loss=2.55588 | val_composite=2.40895  <- best
+  Epoch 04 | train_loss=2.35999 | val_composite=2.23584  <- best
+  Epoch 05 | train_loss=2.18115 | val_composite=2.06353  <- best
+  Epoch 06 | train_loss=2.02048 | val_composite=1.94666  <- best
+  Epoch 07 | train_loss=1.84853 | val_composite=1.75882  <- best
+  Epoch 08 | train_loss=1.68492 | val_composite=1.59062  <- best
+  Epoch 09 | train_loss=1.47475 | val_composite=1.39076  <- best
+  Epoch 10 | train_loss=1.24108 | val_composite=1.17452  <- best
+  Epoch 11 | train_loss=0.96964 | val_composite=0.97109  <- best
+  Epoch 12 | train_loss=0.65655 | val_composite=0.67930  <- best
+  Epoch 13 | train_loss=0.34170 | val_composite=0.55207  <- best
+  Epoch 14 | train_loss=0.19492 | val_composite=0.54272  <- best
+  Epoch 15 | train_loss=0.13779 | val_composite=0.56907
+  Epoch 16 | train_loss=0.13450 | val_composite=0.54092  <- best
+  Epoch 20 | train_loss=0.07503 | val_composite=0.57615
+  Early stopping at epoch 21 (patience=5)
+  [Youden-J] energy:  thr=-27.6694  TPR=0.935  FPR_known=0.037
+  [Youden-J] entropy: thr=0.0005  TPR=0.746  FPR_known=0.043
+  [Youden-J] cosine:  thr=0.6443  TPR=0.942  FPR_known=0.039
+  Epoch 01 | train_loss=3.57379 | val_composite=2.84394  <- best
+  Epoch 02 | train_loss=2.79565 | val_composite=2.64968  <- best
+  Epoch 03 | train_loss=2.53000 | val_composite=2.48579  <- best
+  Epoch 04 | train_loss=2.34691 | val_composite=2.20097  <- best
+  Epoch 05 | train_loss=2.15082 | val_composite=2.03272  <- best
+  Epoch 06 | train_loss=1.99897 | val_composite=1.88400  <- best
+  Epoch 07 | train_loss=1.83123 | val_composite=1.73317  <- best
+  Epoch 08 | train_loss=1.65644 | val_composite=1.57026  <- best
+  Epoch 09 | train_loss=1.46870 | val_composite=1.38882  <- best
+  Epoch 10 | train_loss=1.24496 | val_composite=1.15446  <- best
+  Epoch 11 | train_loss=0.97714 | val_composite=0.95148  <- best
+  Epoch 12 | train_loss=0.65601 | val_composite=0.65631  <- best
+  Epoch 13 | train_loss=0.45172 | val_composite=0.56435  <- best
+  Epoch 14 | train_loss=0.27209 | val_composite=0.49718  <- best
+  Epoch 15 | train_loss=0.16420 | val_composite=0.53551
+  Early stopping at epoch 19 (patience=5)
+  [Youden-J] energy:  thr=-26.2226  TPR=0.856  FPR_known=0.031
+  [Youden-J] entropy: thr=0.0005  TPR=0.783  FPR_known=0.036
+  [Youden-J] cosine:  thr=0.6868  TPR=0.871  FPR_known=0.040
+  Epoch 01 | train_loss=3.67270 | val_composite=2.90277  <- best
+  Epoch 02 | train_loss=2.84461 | val_composite=2.62149  <- best
+  Epoch 03 | train_loss=2.58602 | val_composite=2.44194  <- best
+  Epoch 04 | train_loss=2.37681 | val_composite=2.23877  <- best
+  Epoch 05 | train_loss=2.19201 | val_composite=2.10325  <- best
+  Epoch 06 | train_loss=2.02583 | val_composite=1.94547  <- best
+  Epoch 07 | train_loss=1.86886 | val_composite=1.76054  <- best
+  Epoch 08 | train_loss=1.69446 | val_composite=1.60818  <- best
+  Epoch 09 | train_loss=1.49232 | val_composite=1.41227  <- best
+  Epoch 10 | train_loss=1.27862 | val_composite=1.23394  <- best
+  Epoch 11 | train_loss=1.00721 | val_composite=0.99288  <- best
+  Epoch 12 | train_loss=0.71506 | val_composite=0.77842  <- best
+  Epoch 13 | train_loss=0.41237 | val_composite=0.63541  <- best
+  Epoch 14 | train_loss=0.26009 | val_composite=0.60567  <- best
+  Epoch 15 | train_loss=0.16652 | val_composite=0.69640
+  Early stopping at epoch 19 (patience=5)
+  [Youden-J] energy:  thr=-26.7590  TPR=0.892  FPR_known=0.039
+  [Youden-J] entropy: thr=0.0005  TPR=0.861  FPR_known=0.056
+  [Youden-J] cosine:  thr=0.6807  TPR=0.895  FPR_known=0.046
+  Epoch 01 | train_loss=3.58063 | val_composite=2.87109  <- best
+  Epoch 02 | train_loss=2.81566 | val_composite=2.59336  <- best
+  Epoch 03 | train_loss=2.56796 | val_composite=2.45237  <- best
+  Epoch 04 | train_loss=2.37432 | val_composite=2.26286  <- best
+  Epoch 05 | train_loss=2.18752 | val_composite=2.17507  <- best
+  Epoch 06 | train_loss=2.00379 | val_composite=1.94095  <- best
+  Epoch 07 | train_loss=1.83881 | val_composite=1.82184  <- best
+  Epoch 08 | train_loss=1.67689 | val_composite=1.62753  <- best
+  Epoch 09 | train_loss=1.49043 | val_composite=1.47547  <- best
+  Epoch 10 | train_loss=1.28350 | val_composite=1.29086  <- best
+  Epoch 11 | train_loss=1.01792 | val_composite=1.07518  <- best
+  Epoch 12 | train_loss=0.70606 | val_composite=0.80796  <- best
+  Epoch 13 | train_loss=0.37795 | val_composite=0.70189  <- best
+  Epoch 15 | train_loss=0.13619 | val_composite=0.83615
+  Epoch 17 | train_loss=0.11148 | val_composite=0.65965  <- best
+  Epoch 20 | train_loss=0.07337 | val_composite=0.78063
+  Early stopping at epoch 22 (patience=5)
+  [Youden-J] energy:  thr=-28.3433  TPR=0.914  FPR_known=0.035
+  [Youden-J] entropy: thr=0.0005  TPR=0.779  FPR_known=0.043
+  [Youden-J] cosine:  thr=0.6540  TPR=0.932  FPR_known=0.042
+
+====================================================================================================
+MULTI-CLASS 5-FOLD CV RESULTS
+====================================================================================================
+
+Model                Accuracy                  F1 (weighted)             MCC (closed)           MCC (open-set)
+----------------------------------------------------------------------------------------------------
+LightGBM             0.9987±0.0005      0.9987±0.0005      0.9984±0.0006   0.9998±0.0002
+OSPREY               0.9869±0.0035      0.9869±0.0036      0.9837±0.0044   0.9973±0.0011
+====================================================================================================
+
+CV total time: 231.94s
+  Avg per-fold — LightGBM: 8.80s  OSPREY: 35.39s
+Threshold selection: Youden's J on val_known vs. column-permuted near-OOD (no unseen data used).
+  LightGBM (MSP): τ=0.0005 (95th pctl, FPR=5%)
+  [Youden-J] energy:  thr=-26.2642  TPR=0.886  FPR_known=0.029
+  [Youden-J] entropy: thr=0.0005  TPR=0.820  FPR_known=0.044
+  [Youden-J] cosine:  thr=0.6354  TPR=0.907  FPR_known=0.037
+  OSPREY: E_thr=-26.2642, H_thr=0.0005, cos_thr=0.6354 (Youden's J)
+    (val energy:   mean=-37.2067  std=4.2671)
+    (val entropy:  mean=0.0080  std=0.0670)
+
+
+==================================================================================================================================
+MULTI-CLASS OPEN-SET TEST-SET RESULTS  (metrics on accepted samples only)
+==================================================================================================================================
+
+Model        τ          Rej %      Acc          F1 (wt)      MCC          AUROC        AP           Train Time
+----------------------------------------------------------------------------------------------------------------------------------
+LightGBM     0.0005     4.86       0.9996       0.9996       0.9995       0.9999       0.9997       8.26s
+OSPREY       combined   5.87       0.9974       0.9974       0.9968       0.9996       0.9980       45.28s
+==================================================================================================================================
+Valid OVR classes (accepted subset) — LightGBM: 5/5  OSPREY: 5/5
+Wilcoxon Signed-Rank Tests (open-set CV MCC, n=5 folds):
+  Metric: MCC on accepted-only samples (Youden-calibrated rejection, per fold)
+  ⚠  n=5 → minimum one-sided p = 0.0625; power is limited.
+  [OSPREY > LightGBM] W=0.0000, p=1.0000e+00  (not significant)
+
+================================================================================
+CLASSIFICATION REPORTS (Accepted Samples Only)
+================================================================================
+
+--- LightGBM ---
+              precision    recall  f1-score   support
+
+      BENIGN       1.00      1.00      1.00      1346
+ Brute Force       1.00      1.00      1.00      1354
+        DDoS       1.00      1.00      1.00      1488
+         DoS       1.00      1.00      1.00      1418
+   Port Scan       1.00      1.00      1.00      1409
+
+    accuracy                           1.00      7015
+   macro avg       1.00      1.00      1.00      7015
+weighted avg       1.00      1.00      1.00      7015
+
+
+--- OSPREY ---
+              precision    recall  f1-score   support
+
+      BENIGN       1.00      0.99      0.99      1183
+ Brute Force       1.00      1.00      1.00      1359
+        DDoS       1.00      1.00      1.00      1500
+         DoS       1.00      1.00      1.00      1421
+   Port Scan       1.00      1.00      1.00      1477
+
+    accuracy                           1.00      6940
+   macro avg       1.00      1.00      1.00      6940
+weighted avg       1.00      1.00      1.00      6940
+
+================================================================================
+
+==========================================================================================
+§5.5 UNSEEN HOLDOUT EVALUATION  (Rare class, never seen during training)
+==========================================================================================
+
+Holdout size: 4,138 samples  |  True class: Rare (OOD)
+
+  LightGBM:
+    τ = 0.0005  |  Unknown Detection Rate = 38.01% (95% CI: 36.55–39.50)  |  False Accept Rate = 61.99% (95% CI: 60.50–63.45)
+    Top mis-predicted classes: {'BENIGN': 2565}
+
+  OSPREY:
+    E_thr=-26.2642  H_thr=0.0005  cos_thr=0.6354
+    Unknown Detection Rate = 80.96% (95% CI: 79.73–82.12)  |  False Accept Rate = 19.04% (95% CI: 17.88–20.27)
+    Gates fired — energy: 2655  entropy: 2180  max_cos: 3350  (of 4138 samples, union=3350)
+    Top mis-predicted classes: {'BENIGN': 662, 'Brute Force': 123, 'DoS': 3}
+
+
+   Model  Unknown Detection Rate %  False Accept Rate %  UDR 95% CI  FAR 95% CI
+LightGBM                 38.013533            61.986467 36.55–39.50 60.50–63.45
+  OSPREY                 80.956984            19.043016 79.73–82.12 17.88–20.27
+==========================================================================================
+
+==============================================================================
+MODEL ARTIFACT SIZE COMPARISON
+==============================================================================
+Method: each deployable artifact is serialized in its native format and compressed with zlib (level=9).
+Model              Raw KB      Zlib KB
+------------------------------------------------------------------------------
+LightGBM           3570.7       1495.9
+OSPREY               85.1         70.0
+------------------------------------------------------------------------------
+OSPREY PARAMETER BREAKDOWN
+  Component                Parameters
+  ---------------------- ------------
+  encoder                      17,056
+  prototypes                      165
+  energy_gate                       0
+  total                        17,221  ← total
+------------------------------------------------------------------------------
+OSPREY THEORETICAL PARAMETER FOOTPRINT
+  FP32: 67.3 KB   FP16: 33.6 KB   INT8: 16.8 KB
+==============================================================================
+
+==============================================================================
+TRADEOFF TABLE (Unknown Detection Security vs Footprint)
+==============================================================================
+   Model Size (KB, raw) Unknown Detection UDR % Rej %
+LightGBM         3570.7                  38.01% 4.86%
+  OSPREY           85.1                  80.96% 5.87%
+==============================================================================
+
+========================================================================
+MODEL EXPORT COMPLETE
+========================================================================
+  Path: /content/nids_models.pkl
+  Raw size:  90.9 KB
+  Compressed: 70.7 KB (22.2% reduction)
+  Contents:
+    OSPREY — 51-feature classifier, 5 classes, triple OOD gate
+  Use with: python infer.py nids_models.pkl <input.csv>
+========================================================================

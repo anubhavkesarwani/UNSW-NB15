@@ -1,0 +1,29 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Comparison of Representative NIDS Approaches}}{7}{table.caption.10}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Class Distribution in the CICIDS-2017 Subsample}}{12}{table.caption.11}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Feature Group Composition for DAEMON and OSPREY}}{14}{table.caption.12}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Cascaded Pipeline Decision Logic}}{18}{table.caption.16}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces DAEMON Feature Groups and Sub-encoder Output Dimensions}}{19}{table.caption.18}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces DAEMON Training Hyperparameters}}{20}{table.caption.19}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces DAEMON Anomaly Signal Statistics on Benign Training Data}}{21}{table.caption.20}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces OSPREY Training Hyperparameters}}{23}{table.caption.22}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Software Library Versions Used in the Project}}{26}{table.caption.24}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces DAEMON Test Set Binary Detection Results}}{30}{table.caption.26}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces DAEMON Per-Class Detection Rates on Test Set}}{31}{table.caption.28}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces OSPREY and LightGBM Baseline: 5-Fold Cross-Validation Results}}{32}{table.caption.30}%
+\contentsline {table}{\numberline {6.4}{\ignorespaces End-to-End Cascaded Pipeline Performance Summary}}{33}{table.caption.32}%
+\contentsline {table}{\numberline {6.5}{\ignorespaces OSPREY Per-Class Classification Report (Test Set, Accepted Samples Only)}}{34}{table.caption.34}%
+\contentsline {table}{\numberline {6.6}{\ignorespaces LightGBM Baseline Per-Class Classification Report (Test Set, Accepted Samples Only)}}{34}{table.caption.35}%
+\contentsline {table}{\numberline {6.7}{\ignorespaces Unknown Attack Detection Rate on Held-Out Unseen Class}}{35}{table.caption.38}%
+\contentsline {table}{\numberline {6.8}{\ignorespaces OSPREY Triple-Gate Breakdown on Unseen-Class Holdout (4,138 Samples)}}{36}{table.caption.39}%
+\contentsline {table}{\numberline {6.9}{\ignorespaces Model Artifact Size Comparison (Serialised and Compressed)}}{37}{table.caption.43}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

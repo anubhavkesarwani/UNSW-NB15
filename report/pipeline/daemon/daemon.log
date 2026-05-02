@@ -1,0 +1,133 @@
+DAEMON full dataset: 150,000 rows
+  Benign: 50,393   Attack: 99,607
+DAEMON split — Train: 105,000  Test: 45,000
+  Train benign: 35,275   Train attack: 69,725
+  Test  benign: 15,118   Test  attack: 29,882
+RobustScaler fitted on 35,275 benign training samples.
+Clipping applied: [−5, 5]
+AE train (benign): 31,748   AE val (benign): 3,527
+DAEMON feature groups (input → encoder output):
+  Flow:     15 features → 24-dim
+  Behavior: 23 features → 32-dim
+  Meta:     24 features → 32-dim
+  Flags:    11 features → 12-dim
+  Total input dim: 73   Bottleneck: 8-dim
+DAEMON parameters: 45,193   device: cpu
+
+DAEMON training (300 epochs max, patience=30)...
+  Epoch   1/300 | train=0.600157 | val=0.151739 | best=0.151739 | pat=0/30
+  Epoch   2/300 | train=0.197422 | val=0.085550 | best=0.085550 | pat=0/30
+  Epoch   3/300 | train=0.147308 | val=0.067328 | best=0.067328 | pat=0/30
+  Epoch   4/300 | train=0.122205 | val=0.051270 | best=0.051270 | pat=0/30
+  Epoch   5/300 | train=0.108149 | val=0.047273 | best=0.047273 | pat=0/30
+  Epoch   6/300 | train=0.097877 | val=0.043102 | best=0.043102 | pat=0/30
+  Epoch   7/300 | train=0.093073 | val=0.039344 | best=0.039344 | pat=0/30
+  Epoch   8/300 | train=0.085645 | val=0.036025 | best=0.036025 | pat=0/30
+  Epoch   9/300 | train=0.082634 | val=0.035125 | best=0.035125 | pat=0/30
+  Epoch  10/300 | train=0.080242 | val=0.033211 | best=0.033211 | pat=0/30
+  Epoch  11/300 | train=0.077086 | val=0.030808 | best=0.030808 | pat=0/30
+  Epoch  12/300 | train=0.074383 | val=0.029519 | best=0.029519 | pat=0/30
+  Epoch  13/300 | train=0.070942 | val=0.028409 | best=0.028409 | pat=0/30
+  Epoch  14/300 | train=0.068861 | val=0.026965 | best=0.026965 | pat=0/30
+  Epoch  15/300 | train=0.068983 | val=0.026196 | best=0.026196 | pat=0/30
+  Epoch  16/300 | train=0.065568 | val=0.024795 | best=0.024795 | pat=0/30
+  Epoch  18/300 | train=0.062213 | val=0.023513 | best=0.023513 | pat=0/30
+  Epoch  19/300 | train=0.060598 | val=0.023129 | best=0.023129 | pat=0/30
+  Epoch  20/300 | train=0.061036 | val=0.023756 | best=0.023129 | pat=1/30
+  Epoch  21/300 | train=0.060157 | val=0.021894 | best=0.021894 | pat=0/30
+  Epoch  23/300 | train=0.057687 | val=0.021157 | best=0.021157 | pat=0/30
+  Epoch  24/300 | train=0.055685 | val=0.021130 | best=0.021130 | pat=0/30
+  Epoch  26/300 | train=0.052166 | val=0.020203 | best=0.020203 | pat=0/30
+  Epoch  27/300 | train=0.053844 | val=0.019667 | best=0.019667 | pat=0/30
+  Epoch  28/300 | train=0.052904 | val=0.019080 | best=0.019080 | pat=0/30
+  Epoch  30/300 | train=0.051005 | val=0.018693 | best=0.018693 | pat=0/30
+  Epoch  32/300 | train=0.051474 | val=0.018242 | best=0.018242 | pat=0/30
+  Epoch  36/300 | train=0.048850 | val=0.017445 | best=0.017445 | pat=0/30
+  Epoch  39/300 | train=0.047473 | val=0.017050 | best=0.017050 | pat=0/30
+  Epoch  40/300 | train=0.048582 | val=0.016926 | best=0.016926 | pat=0/30
+  Epoch  41/300 | train=0.048330 | val=0.016884 | best=0.016884 | pat=0/30
+  Epoch  42/300 | train=0.046094 | val=0.016827 | best=0.016827 | pat=0/30
+  Epoch  43/300 | train=0.047797 | val=0.016470 | best=0.016470 | pat=0/30
+  Epoch  44/300 | train=0.045880 | val=0.016447 | best=0.016447 | pat=0/30
+  Epoch  45/300 | train=0.046152 | val=0.016432 | best=0.016432 | pat=0/30
+  Epoch  46/300 | train=0.045762 | val=0.016381 | best=0.016381 | pat=0/30
+  Epoch  49/300 | train=0.045290 | val=0.016340 | best=0.016340 | pat=0/30
+  Epoch  60/300 | train=0.048759 | val=0.017672 | best=0.016340 | pat=11/30
+  Epoch  74/300 | train=0.043633 | val=0.015884 | best=0.015884 | pat=0/30
+  Epoch  80/300 | train=0.041897 | val=0.016055 | best=0.015884 | pat=6/30
+  Epoch  81/300 | train=0.041424 | val=0.015620 | best=0.015620 | pat=0/30
+  Epoch  82/300 | train=0.040988 | val=0.015472 | best=0.015472 | pat=0/30
+  Epoch  83/300 | train=0.040893 | val=0.015330 | best=0.015330 | pat=0/30
+  Epoch  85/300 | train=0.039734 | val=0.014773 | best=0.014773 | pat=0/30
+  Epoch  89/300 | train=0.038330 | val=0.014495 | best=0.014495 | pat=0/30
+  Epoch  92/300 | train=0.038388 | val=0.014085 | best=0.014085 | pat=0/30
+  Epoch  95/300 | train=0.037183 | val=0.013968 | best=0.013968 | pat=0/30
+  Epoch  96/300 | train=0.037189 | val=0.013334 | best=0.013334 | pat=0/30
+  Epoch 100/300 | train=0.036617 | val=0.013393 | best=0.013334 | pat=4/30
+  Epoch 108/300 | train=0.035426 | val=0.013269 | best=0.013269 | pat=0/30
+  Epoch 109/300 | train=0.035233 | val=0.012580 | best=0.012580 | pat=0/30
+  Epoch 115/300 | train=0.032957 | val=0.012397 | best=0.012397 | pat=0/30
+  Epoch 118/300 | train=0.033495 | val=0.012333 | best=0.012333 | pat=0/30
+  Epoch 120/300 | train=0.033544 | val=0.012258 | best=0.012258 | pat=0/30
+  Epoch 123/300 | train=0.033169 | val=0.012051 | best=0.012051 | pat=0/30
+  Epoch 125/300 | train=0.032820 | val=0.011997 | best=0.011997 | pat=0/30
+  Epoch 129/300 | train=0.032316 | val=0.011943 | best=0.011943 | pat=0/30
+  Epoch 130/300 | train=0.032264 | val=0.011928 | best=0.011928 | pat=0/30
+  Epoch 131/300 | train=0.031868 | val=0.011775 | best=0.011775 | pat=0/30
+  Epoch 132/300 | train=0.031962 | val=0.011744 | best=0.011744 | pat=0/30
+  Epoch 133/300 | train=0.031020 | val=0.011738 | best=0.011738 | pat=0/30
+  Epoch 135/300 | train=0.031933 | val=0.011715 | best=0.011715 | pat=0/30
+  Epoch 136/300 | train=0.031536 | val=0.011649 | best=0.011649 | pat=0/30
+  Epoch 137/300 | train=0.031441 | val=0.011619 | best=0.011619 | pat=0/30
+  Epoch 138/300 | train=0.031104 | val=0.011552 | best=0.011552 | pat=0/30
+  Epoch 140/300 | train=0.031452 | val=0.011592 | best=0.011552 | pat=2/30
+  Epoch 142/300 | train=0.031895 | val=0.011479 | best=0.011479 | pat=0/30
+  Epoch 146/300 | train=0.031190 | val=0.011452 | best=0.011452 | pat=0/30
+  Epoch 160/300 | train=0.036662 | val=0.014255 | best=0.011452 | pat=14/30
+  Early stopping at epoch 176
+
+DAEMON training time: 394.05s  |  Best val MSE: 0.011452
+
+Fitting DAEMON anomaly scorer on benign training data...
+  MSE:         mean=0.009980   std=0.023758
+  Group-max:   mean=0.018669   std=0.051211
+  Latent Maha: mean=2.6563     std=0.9714
+  Benign composite: mean=-0.0000  p95=1.1379  p99=2.8028
+Scoring training set for threshold calibration...
+Best threshold: 0.3028  (benign 77.5th pctl)  F1=0.9286 (on training set)
+Scoring test set...
+
+
+========================================================================
+DAEMON TEST SET RESULTS (binary anomaly detection)
+========================================================================
+  Threshold : 0.3028  (benign 77.5th pctl)
+  Accuracy  : 0.9021
+  Precision : 0.8951
+  Recall    : 0.9657
+  F1        : 0.9291
+  MCC       : 0.7775
+  TP=28,858  TN=11,735  FP=3,383  FN=1,024
+  Training time: 394.05s
+========================================================================
+
+  BENIGN                            22.38%  (3383/15118)  ← baseline (FPR)
+  Rare                              36.88%  (465/1261)
+  Brute Force                       97.29%  (2589/2661)
+  DoS                               99.07%  (13465/13591)
+  Port Scan                         99.65%  (5092/5110)
+  DDoS                              99.83%  (7247/7259)
+
+========================================================================
+DAEMON LOCO ZERO-DAY SIMULATION
+  Threshold τ=0.3028  (fixed — no test-class information used)
+========================================================================
+  Brute Force                      DR= 97.29%  AUROC=0.9674  (2589/2661)
+  DDoS                             DR= 99.83%  AUROC=0.9746  (7247/7259)
+  DoS                              DR= 99.07%  AUROC=0.9850  (13465/13591)
+  Port Scan                        DR= 99.65%  AUROC=0.9078  (5092/5110)
+  Rare                             DR= 36.88%  AUROC=0.7493  (465/1261)
+========================================================================
+  Mean Detection Rate: 86.55%
+  Mean AUROC         : 0.9168
+========================================================================

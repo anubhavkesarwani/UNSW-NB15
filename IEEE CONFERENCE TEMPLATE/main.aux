@@ -1,0 +1,117 @@
+\relax 
+\providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
+\@nameuse{bbl@beforestart}
+\citation{sharafaldin2018cicids,moustafa2015unsw}
+\citation{sharafaldin2018cicids,moustafa2015unsw}
+\citation{ahmad2021nids_survey,ferrag2020nids_dl,liu2024nids_survey}
+\citation{khosla2020supcon}
+\babel@aux{english}{}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\citation{sarhan2022towards,sarhan2023netflow}
+\citation{ahmad2021nids_survey,ferrag2020nids_dl}
+\citation{chen2016xgboost}
+\citation{liu2024nids_survey,grinsztajn2022tree}
+\citation{amira2021twostage,gao2019twostage}
+\citation{lin2022cascaded}
+\citation{khosla2020supcon}
+\citation{wang2022contrastive_anomaly}
+\citation{xu2023contrastive_nids}
+\citation{liu2024nids_survey}
+\citation{ba2016layernorm}
+\citation{he2016resnet}
+\citation{wei2022logitnorm}
+\citation{khosla2020supcon}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Machine Learning for NIDS}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Cascaded and Hierarchical Detection}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Contrastive Learning in Security}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Computational Efficiency in NIDS}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {III}Proposed Method}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}System Overview}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Stage~1: SENTRY Binary Gate}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}1}Architecture}{2}{}\protected@file@percent }
+\newlabel{eq:proj}{{1}{2}{}{equation.1}{}}
+\newlabel{eq:resblock}{{2}{2}{}{equation.2}{}}
+\newlabel{eq:embed}{{3}{2}{}{equation.3}{}}
+\newlabel{eq:logitnorm}{{4}{2}{}{equation.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-B}2}Hybrid Training Objective}{2}{}\protected@file@percent }
+\newlabel{eq:loss}{{5}{2}{}{equation.5}{}}
+\newlabel{eq:supcon}{{6}{2}{}{equation.6}{}}
+\citation{chen2016xgboost}
+\citation{grinsztajn2022tree}
+\citation{he2009imbalanced}
+\citation{sarhan2022towards,sarhan2023netflow}
+\citation{aouini2022nfstream}
+\citation{sharafaldin2018cicids}
+\citation{moustafa2015unsw}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces TRIAGE cascade pipeline. All flows enter Stage~1~(\textbf  {SENTRY}), a 50K-parameter neural binary gate. Flows cleared as Benign exit immediately~(No branch); Attack-flagged flows proceed to Stage~2~(\textbf  {XGBoost}) for fine-grained attack-type labelling~(Yes branch). The embedding head and hybrid $\mathcal  {L}_{\mathrm  {BCE}}$\,+\,$\mathcal  {L}_{\mathrm  {SupCon}}$ objective are training-time internals of SENTRY; solid arrows show the inference-time data flow.}}{3}{}\protected@file@percent }
+\newlabel{fig:architecture}{{1}{3}{}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Stage~2: XGBoost Multiclass Classifier}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Cascade Routing and Throughput Model}{3}{}\protected@file@percent }
+\newlabel{eq:flagged}{{7}{3}{}{equation.7}{}}
+\newlabel{eq:throughput}{{8}{3}{}{equation.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Feature Engineering}{3}{}\protected@file@percent }
+\newlabel{sec:feat}{{\mbox  {III-E}}{3}{}{subsection.3.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Experimental Setup}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Datasets and Preprocessing}{3}{}\protected@file@percent }
+\citation{sarhan2022towards}
+\citation{aouini2022nfstream}
+\citation{loshchilov2019adamw}
+\citation{loshchilov2017sgdr}
+\citation{chawla2002smote}
+\citation{he2009imbalanced}
+\citation{chicco2020mcc}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Training Configuration}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Evaluation Metrics}{4}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces SENTRY Binary Gate Performance~($t = 0.5$)}}{4}{}\protected@file@percent }
+\newlabel{tab:s1}{{I}{4}{}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Results and Discussion}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}SENTRY Gate Performance}{4}{}\protected@file@percent }
+\newlabel{sec:s1}{{\mbox  {V-A}}{4}{}{subsection.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}End-to-End Performance and Baseline Comparison}{4}{}\protected@file@percent }
+\newlabel{sec:e2e}{{\mbox  {V-B}}{4}{}{subsection.5.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Stage~2 and End-to-End Pipeline Performance}}{5}{}\protected@file@percent }
+\newlabel{tab:e2e}{{II}{5}{}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Comparison with Flat Multiclass Baselines (Identical Splits and Features)}}{5}{}\protected@file@percent }
+\newlabel{tab:baseline}{{III}{5}{}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Per-Class End-to-End Performance~(Cascade Pipeline)}}{5}{}\protected@file@percent }
+\newlabel{tab:perclass}{{IV}{5}{}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Per-Class Analysis}{5}{}\protected@file@percent }
+\newlabel{sec:perclass}{{\mbox  {V-C}}{5}{}{subsection.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Ablation: Supervised Contrastive Loss}{5}{}\protected@file@percent }
+\newlabel{sec:ablation}{{\mbox  {V-D}}{5}{}{subsection.5.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Accuracy--throughput frontier. Flat baselines occupy fixed points~(throughput independent of traffic mix). TRIAGE's operating point depends on the deployment attack rate~$r$: at the balanced test-set rate~($r{\approx }50\,\%$, lowest star) it is competitive with flat models; as $r$ decreases toward production levels~($r{\leq }5\,\%$), TRIAGE moves upward into a region no flat classifier can reach---combining high accuracy with high throughput because most flows exit after Stage~1. Throughput is computed analytically from per-stage latencies via Eq.~\eqref  {eq:throughput}.}}{6}{}\protected@file@percent }
+\newlabel{fig:pareto}{{2}{6}{}{figure.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Ablation: Loss Component Contribution to SENTRY}}{6}{}\protected@file@percent }
+\newlabel{tab:ablation}{{V}{6}{}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-E}}Limitations}{6}{}\protected@file@percent }
+\newlabel{sec:limit}{{\mbox  {V-E}}{6}{}{subsection.5.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{6}{}\protected@file@percent }
+\bibstyle{IEEEtran}
+\bibdata{references}
+\bibcite{sharafaldin2018cicids}{1}
+\bibcite{moustafa2015unsw}{2}
+\bibcite{ahmad2021nids_survey}{3}
+\bibcite{ferrag2020nids_dl}{4}
+\bibcite{liu2024nids_survey}{5}
+\bibcite{khosla2020supcon}{6}
+\bibcite{sarhan2022towards}{7}
+\bibcite{sarhan2023netflow}{8}
+\bibcite{chen2016xgboost}{9}
+\bibcite{grinsztajn2022tree}{10}
+\bibcite{amira2021twostage}{11}
+\bibcite{gao2019twostage}{12}
+\bibcite{lin2022cascaded}{13}
+\bibcite{wang2022contrastive_anomaly}{14}
+\bibcite{xu2023contrastive_nids}{15}
+\bibcite{ba2016layernorm}{16}
+\bibcite{he2016resnet}{17}
+\bibcite{wei2022logitnorm}{18}
+\bibcite{he2009imbalanced}{19}
+\bibcite{aouini2022nfstream}{20}
+\bibcite{loshchilov2019adamw}{21}
+\bibcite{loshchilov2017sgdr}{22}
+\bibcite{chawla2002smote}{23}
+\bibcite{chicco2020mcc}{24}
+\@writefile{toc}{\contentsline {section}{References}{7}{}\protected@file@percent }
+\gdef \@abspage@last{7}

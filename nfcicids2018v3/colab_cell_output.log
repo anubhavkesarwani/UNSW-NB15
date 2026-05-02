@@ -1,0 +1,245 @@
+ >>> Global seed set to: 42 (random, numpy, torch CPU+CUDA, cuDNN deterministic)
+Device: cuda
+[14:27:55] ============================================================
+[14:27:55] — Two-Stage Cascaded NIDS Pipeline
+[14:27:55] ============================================================
+[14:27:55] Device:    cuda
+[14:27:55] Output:    ./nfcicids2018v3
+[14:27:55] Subsample: 250,000
+[14:27:55] Loading dataset from https://media.githubusercontent.com/media/anubhavkesarwani/nfv3-unsw-nb15-cicids2018-preprocessing/refs/heads/master/NF-CICIDS2018-v3/dataset.csv
+[14:28:13] Raw shape: (4188602, 51)
+[14:28:13] Dropped 18 non-predictive columns
+[14:28:13] Fetching attack map...
+[14:28:17] Feature engineering ...
+[14:28:19] Feature matrix: 45 engineered features
+[14:28:20] Label distribution:
+Attack
+Benign          2094301
+DDoS            1322625
+Brute Force      287597
+DoS              254296
+Infiltration     115805
+Bot              111460
+Web Attack         2518
+[14:28:20] Stratified subsampling 250,000 ...
+[14:28:29] Subsampled: 250,000 rows
+[14:28:29] Stratified 70/15/15 split ...
+[14:28:30] Train: 175,000  Val: 37,500  Test: 37,500
+[14:28:30] mRMR skipped: 45 features already at reference dimensionality (45).
+[14:28:30] Data pipeline done in 34.9s
+[14:28:30]   Train: 87,500 attacks / 175,000 total (50.0%)
+[14:28:30]   Val:   18,750   attacks / 37,500 total (50.0%)
+[14:28:30]   Test:  18,750  attacks / 37,500 total (50.0%)
+[14:28:30] n_features = 45
+[14:28:30] ============================================================
+[14:28:30] SENTRY — Binary Detection + OOD Training
+[14:28:30] ============================================================
+[14:28:30] Parameters: 50,208
+[14:28:33]   Epoch   1 | BCE 0.3733  SupCon 6.1241 | Acc 0.9687  P 0.9864  R 0.9505  F1 0.9681  MCC 0.9380
+[14:28:47]   Epoch   5 | BCE 0.3164  SupCon 5.9136 | Acc 0.9708  P 0.9881  R 0.9531  F1 0.9703  MCC 0.9422
+[14:29:04]   Epoch  10 | BCE 0.3121  SupCon 5.8902 | Acc 0.9739  P 0.9949  R 0.9528  F1 0.9734  MCC 0.9487
+[14:29:21]   Epoch  15 | BCE 0.3096  SupCon 5.8818 | Acc 0.9736  P 0.9916  R 0.9553  F1 0.9731  MCC 0.9478
+[14:29:37]   Epoch  20 | BCE 0.3077  SupCon 5.8747 | Acc 0.9741  P 0.9905  R 0.9574  F1 0.9737  MCC 0.9487
+[14:29:53]   Epoch  25 | BCE 0.3073  SupCon 5.8723 | Acc 0.9755  P 0.9934  R 0.9573  F1 0.9750  MCC 0.9516
+[14:30:10]   Epoch  30 | BCE 0.3061  SupCon 5.8708 | Acc 0.9743  P 0.9920  R 0.9564  F1 0.9739  MCC 0.9493
+[14:30:26]   Epoch  35 | BCE 0.3058  SupCon 5.8697 | Acc 0.9753  P 0.9935  R 0.9568  F1 0.9748  MCC 0.9512
+[14:30:42]   Epoch  40 | BCE 0.3054  SupCon 5.8669 | Acc 0.9751  P 0.9923  R 0.9575  F1 0.9746  MCC 0.9507
+[14:30:59]   Epoch  45 | BCE 0.3054  SupCon 5.8664 | Acc 0.9750  P 0.9922  R 0.9574  F1 0.9745  MCC 0.9505
+[14:31:15]   Epoch  50 | BCE 0.3040  SupCon 5.8634 | Acc 0.9757  P 0.9939  R 0.9572  F1 0.9752  MCC 0.9520
+[14:31:31]   Epoch  55 | BCE 0.3041  SupCon 5.8618 | Acc 0.9758  P 0.9938  R 0.9575  F1 0.9753  MCC 0.9522
+[14:31:48]   Epoch  60 | BCE 0.3040  SupCon 5.8623 | Acc 0.9747  P 0.9920  R 0.9571  F1 0.9743  MCC 0.9500
+[14:32:05]   Epoch  65 | BCE 0.3051  SupCon 5.8658 | Acc 0.9736  P 0.9887  R 0.9581  F1 0.9732  MCC 0.9477
+[14:32:21]   Epoch  70 | BCE 0.3050  SupCon 5.8628 | Acc 0.9756  P 0.9947  R 0.9563  F1 0.9751  MCC 0.9519
+[14:32:38]   Epoch  75 | BCE 0.3031  SupCon 5.8575 | Acc 0.9753  P 0.9930  R 0.9573  F1 0.9748  MCC 0.9512
+[14:32:55]   Epoch  80 | BCE 0.3024  SupCon 5.8541 | Acc 0.9760  P 0.9939  R 0.9579  F1 0.9755  MCC 0.9526
+[14:33:11]   Epoch  85 | BCE 0.3006  SupCon 5.8494 | Acc 0.9758  P 0.9935  R 0.9579  F1 0.9754  MCC 0.9523
+[14:33:29]   Epoch  90 | BCE 0.3007  SupCon 5.8504 | Acc 0.9757  P 0.9932  R 0.9579  F1 0.9752  MCC 0.9520
+[14:33:45]   Epoch  95 | BCE 0.2994  SupCon 5.8463 | Acc 0.9752  P 0.9926  R 0.9576  F1 0.9748  MCC 0.9510
+[14:34:02]   Epoch 100 | BCE 0.3005  SupCon 5.8478 | Acc 0.9760  P 0.9941  R 0.9577  F1 0.9756  MCC 0.9526
+[14:34:19]   Epoch 105 | BCE 0.3010  SupCon 5.8487 | Acc 0.9765  P 0.9938  R 0.9590  F1 0.9761  MCC 0.9536
+[14:34:35]   Epoch 110 | BCE 0.2999  SupCon 5.8458 | Acc 0.9765  P 0.9936  R 0.9591  F1 0.9761  MCC 0.9536
+[14:34:52]   Epoch 115 | BCE 0.2996  SupCon 5.8451 | Acc 0.9763  P 0.9933  R 0.9592  F1 0.9759  MCC 0.9533
+[14:35:09]   Epoch 120 | BCE 0.3009  SupCon 5.8496 | Acc 0.9744  P 0.9920  R 0.9565  F1 0.9739  MCC 0.9494
+[14:35:25]   Epoch 125 | BCE 0.3010  SupCon 5.8499 | Acc 0.9755  P 0.9929  R 0.9578  F1 0.9750  MCC 0.9515
+[14:35:42]   Epoch 130 | BCE 0.3002  SupCon 5.8479 | Acc 0.9757  P 0.9923  R 0.9589  F1 0.9753  MCC 0.9520
+[14:36:00]   Epoch 135 | BCE 0.3013  SupCon 5.8497 | Acc 0.9751  P 0.9928  R 0.9571  F1 0.9746  MCC 0.9507
+[14:36:16]   Epoch 140 | BCE 0.3000  SupCon 5.8466 | Acc 0.9757  P 0.9934  R 0.9578  F1 0.9753  MCC 0.9520
+[14:36:16]   Early stopping at epoch 140
+[14:36:16]   Best val: Acc=0.9765  F1=0.9761  MCC=0.9536
+[14:36:16] Stage 1 training time: 466.3s (7.8 min)
+[14:36:18]
+============================================================
+[14:36:18] EVAL: SENTRY — Binary Detection on Test Set
+[14:36:18] ============================================================
+[14:36:18]
+  [Default (t=0.50)]
+[14:36:18]   Accuracy:      0.9768
+[14:36:18]   Precision:     0.9927
+[14:36:18]   Recall (DR):   0.9607
+[14:36:18]   F1:            0.9764
+[14:36:18]   MCC:           0.9541
+[14:36:18]   FPR:           0.0071
+[14:36:18]   FNR:           0.0393
+[14:36:18]   TP=18,014  FP=133  FN=736  TN=18,617
+[14:36:19]
+  Threshold sweep (FPR budget = 0.01): best threshold = 0.242
+[14:36:19]
+  [Tuned (t=0.242)]
+[14:36:19]   Accuracy:      0.9756
+[14:36:19]   Precision:     0.9897
+[14:36:19]   Recall (DR):   0.9612
+[14:36:19]   F1:            0.9752
+[14:36:19]   MCC:           0.9516
+[14:36:19]   FPR:           0.0100
+[14:36:19]   FNR:           0.0388
+[14:36:19]   TP=18,022  FP=187  FN=728  TN=18,563
+[14:36:19] Stage 1 Default:  Acc=0.9768  F1=0.9764  MCC=0.9541  FPR=0.0071  FNR=0.0393
+[14:36:19] Stage 1 Tuned:    Acc=0.9756  F1=0.9752  MCC=0.9516  FPR=0.0100  FNR=0.0388  (t=0.242)
+[14:36:19]
+============================================================
+[14:36:19] ABLATION STUDY — Loss Component Contribution
+[14:36:19] ============================================================
+[14:36:19]   Metric: Recall @ FPR ≤ 1% (the gate's actual operating point)
+[14:36:22]   Full Model      | (reused) AUROC=0.9810  Rec@FPR1%=0.9612  Sep=0.5801
+[14:36:22]   Training: BCE Only ...
+>>> Global seed set to: 42 (random, numpy, torch CPU+CUDA, cuDNN deterministic)
+[14:41:36]   BCE Only        | AUROC=0.9766  Rec@FPR1%=0.9554  Sep=0.5770  (312s)
+[14:41:36]
+  Ablation Summary:
+[14:41:36]   Variant         |   AUROC  Rec@1%  FPR_def  Rec_def ScoreSep
+[14:41:36]   --------------------------------------------------------------------
+[14:41:36]   Full Model      |  0.9810  0.9612   0.0071   0.9607   0.5801
+[14:41:36]   BCE Only        |  0.9766  0.9554   0.0076   0.9551   0.5770
+[14:41:36]
+============================================================
+[14:41:36] STAGE 2 — Multi-Class Attack Classification (XGBoost)
+[14:41:36] ============================================================
+[14:41:37] Stage 2: capped majority at 25,000 -> 57,241 real samples (no SMOTE)
+[14:41:37] Attack classes (6): ['Bot', 'Brute Force', 'DDoS', 'DoS', 'Infiltration', 'Web Attack']
+[14:41:37] Attack samples — Train: 57,241  Val: 18,750  Test: 18,750
+[14:41:37] Training class distribution:
+[14:41:37]   Bot                   train=  4,657  val=  998  test=  998
+[14:41:37]   Brute Force           train= 12,016  val=2,575  test=2,574
+[14:41:37]   DDoS                  train= 25,000  val=11,842  test=11,841
+[14:41:37]   DoS                   train= 10,625  val=2,276  test=2,277
+[14:41:37]   Infiltration          train=  4,838  val=1,037  test=1,037
+[14:41:37]   Web Attack            train=    105  val=   22  test=   23
+[14:41:37]
+--- Stage 2: 5-fold Stratified Cross-Validation ---
+[14:41:53]   Fold 1: Acc=0.9239  F1w=0.9200  MCC=0.9008  (best_iter=356)
+[14:42:11]   Fold 2: Acc=0.9244  F1w=0.9205  MCC=0.9013  (best_iter=328)
+[14:42:29]   Fold 3: Acc=0.9232  F1w=0.9193  MCC=0.9000  (best_iter=407)
+[14:42:44]   Fold 4: Acc=0.9278  F1w=0.9246  MCC=0.9056  (best_iter=302)
+[14:43:02]   Fold 5: Acc=0.9216  F1w=0.9173  MCC=0.8979  (best_iter=339)
+[14:43:02]
+  CV Summary (5-fold):
+[14:43:02]     Accuracy:      0.9242 ± 0.0021
+[14:43:02]     F1 (weighted): 0.9203 ± 0.0024
+[14:43:02]     MCC:           0.9011 ± 0.0025
+[14:43:02]
+--- Stage 2: Training final XGBoost model ---
+[0]	validation_0-mlogloss:1.13282
+[100]	validation_0-mlogloss:0.10672
+[200]	validation_0-mlogloss:0.09772
+[300]	validation_0-mlogloss:0.09731
+[399]	validation_0-mlogloss:0.09731
+[14:43:22]   Training time: 20.0s  |  Best iteration: 349
+[14:43:22]
+  Top-20 Feature Importances (gain):
+[14:43:22]     pkt_size_ratio                          : 0
+[14:43:22]     byte_asymmetry                          : 0
+[14:43:22]     MIN_IP_PKT_LEN                          : 0
+[14:43:22]     MAX_TTL                                 : 0
+[14:43:22]     DURATION_OUT                            : 0
+[14:43:22]     MIN_TTL                                 : 0
+[14:43:22]     bytes_ratio                             : 0
+[14:43:22]     pkt_size_range                          : 0
+[14:43:22]     TCP_WIN_MAX_IN                          : 0
+[14:43:22]     DST_TO_SRC_SECOND_BYTES                 : 0
+[14:43:22]     SRC_TO_DST_IAT_AVG                      : 0
+[14:43:22]     DST_TO_SRC_IAT_STDDEV                   : 0
+[14:43:22]     OUT_BYTES                               : 0
+[14:43:22]     SRC_TO_DST_IAT_STDDEV                   : 0
+[14:43:22]     TCP_FLAGS                               : 0
+[14:43:22]     throughput_ratio                        : 0
+[14:43:22]     DST_TO_SRC_IAT_MAX                      : 0
+[14:43:22]     LONGEST_FLOW_PKT                        : 0
+[14:43:22]     SERVER_TCP_FLAGS                        : 0
+[14:43:22]     CLIENT_TCP_FLAGS                        : 0
+[14:43:22]
+--- Stage 2: Test-Set Evaluation ---
+[14:43:22]
+  Classification Report:
+[14:43:22]               precision    recall  f1-score   support
+
+         Bot       1.00      1.00      1.00       998
+ Brute Force       0.73      1.00      0.85      2574
+        DDoS       1.00      1.00      1.00     11841
+         DoS       1.00      0.59      0.74      2277
+Infiltration       0.99      1.00      1.00      1037
+  Web Attack       0.85      0.74      0.79        23
+
+    accuracy                           0.95     18750
+   macro avg       0.93      0.89      0.90     18750
+weighted avg       0.96      0.95      0.95     18750
+
+[14:43:22]
+============================================================
+[14:43:22] END-TO-END — Cascaded Pipeline on Full Test Set
+[14:43:22] ============================================================
+[14:43:22]   Stage 1 routed 18,147 samples to Stage 2 (19,353 classified Benign)
+[14:43:23]   Stage 2 classified 18,147 samples into 6 attack classes
+[14:43:23]
+  End-to-End Classification Report:
+[14:43:23]               precision    recall  f1-score   support
+
+      Benign       0.96      0.99      0.98     18750
+         Bot       1.00      1.00      1.00       998
+ Brute Force       0.73      1.00      0.85      2574
+        DDoS       1.00      0.99      1.00     11841
+         DoS       0.98      0.59      0.74      2277
+Infiltration       0.81      0.35      0.49      1037
+  Web Attack       0.40      0.74      0.52        23
+
+    accuracy                           0.95     37500
+   macro avg       0.84      0.81      0.79     37500
+weighted avg       0.96      0.95      0.95     37500
+
+[14:43:31]
+============================================================
+[14:43:31] EXPORT — Combined Two-Stage Pipeline
+[14:43:31] ============================================================
+[14:43:31]   Path:       ./nfcicids2018v3/osprey_pipeline.pkl
+[14:43:31]   Raw:        2962.0 KB
+[14:43:31]   Compressed: 745.1 KB (74.8% reduction)
+[14:43:31]
+============================================================
+[14:43:31] STAGE-WISE INFERENCE BREAKDOWN
+[14:43:31] ============================================================
+[14:43:38]   Test samples : 37,500  |  Runs: 10  |  Device: cuda
+[14:43:38]   Stage                           Avg Latency       Throughput
+[14:43:38]   --------------------------------------------------------------
+[14:43:38]   Stage 1 — SENTRY (binary)          8.71 ms     4,307,375 flows/s
+[14:43:38]   Stage 2 — XGBoost (multiclass)     613.93 ms        61,082 flows/s
+[14:43:38]   E2E  (S1 + S2 combined)            622.64 ms        60,228 flows/s
+[14:43:38] ============================================================
+[14:43:38]
+============================================================
+[14:43:38] PIPELINE COMPLETE — 942.6s (15.7 min)
+[14:43:38] ============================================================
+[14:43:38]   Stage 1 train:  466s  |  Stage 2 train: 20s
+[14:43:38]   CV (5-fold): Acc=0.9242±0.0021  MCC=0.9011±0.0025
+[14:43:38]
+[14:43:38]   Component                      |     Acc     F1w     MCC |    Latency     Throughput |       Size
+[14:43:38]                                  |                         |       (ms)      (flows/s) |       (KB)
+[14:43:38]   ────────────────────────────────────────────────────────────────────────────────────────────────────
+[14:43:38]   S1 SENTRY (binary)           |  0.9768  0.9764  0.9541 |        8.7      4,307,375 | (neural)
+[14:43:38]     FPR=0.0071  FNR=0.0393
+[14:43:38]   S2 XGBoost (attack-only)       |  0.9499  0.9473  0.9147 |      613.9         61,082 |      2,757
+[14:43:38]   ────────────────────────────────────────────────────────────────────────────────────────────────────
+[14:43:38]   E2E (S1+S2)             |  0.9518  0.9468  0.9252 |      622.6         60,228 | ─
+[14:43:38]
+============================================================
+[14:43:38] Archiving Results bundle ...
+[14:43:38] Created ZIP bundle for IEEE paper: /content/nfcicids2018v3.zip
+[14:43:38] ============================================================

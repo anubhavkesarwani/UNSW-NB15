@@ -1,0 +1,236 @@
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 85.9/85.9 kB 5.0 MB/s eta 0:00:00
+>>> Global seed set to: 42 (random, numpy, torch CPU+CUDA, cuDNN deterministic)
+Device: cuda
+[14:01:12] ============================================================
+[14:01:12] — Two-Stage Cascaded NIDS Pipeline
+[14:01:12] ============================================================
+[14:01:12] Device:    cuda
+[14:01:12] Output:    ./nfunswnb15v3
+[14:01:12] Subsample: 250,000
+[14:01:12] Loading dataset from https://media.githubusercontent.com/media/anubhavkesarwani/nfv3-unsw-nb15-cicids2018-preprocessing/refs/heads/master/NF-UNSW-NB15-v3/dataset.csv
+[14:01:34] Raw shape: (2350609, 51)
+[14:01:35] Dropped 18 non-predictive columns
+[14:01:35] Fetching attack map...
+[14:01:37] Feature engineering ...
+[14:01:38] Feature matrix: 45 engineered features
+[14:01:38] Label distribution:
+Attack
+Benign            2222930
+Exploit             45283
+Fuzzers             33816
+Generic             19651
+Reconnaissance      18300
+DoS                  5971
+Backdoor             4658
+[14:01:39] Attack-preserving downsample: keeping ALL 127,679 attacks, downsampling benign 2,222,930 -> 127,679
+[14:01:41] Combined dataset: 255,358 rows (50.0% attacks)
+[14:01:41] Stratified 70/15/15 split ...
+[14:01:41] Train: 178,750  Val: 38,304  Test: 38,304
+[14:01:42] mRMR skipped: 45 features already at reference dimensionality (45).
+[14:01:43] Data pipeline done in 31.1s
+[14:01:43]   Train: 89,375 attacks / 178,750 total (50.0%)
+[14:01:43]   Val:   19,152   attacks / 38,304 total (50.0%)
+[14:01:43]   Test:  19,152  attacks / 38,304 total (50.0%)
+[14:01:43] n_features = 45
+[14:01:43] ============================================================
+[14:01:43] SENTRY — Binary Detection + OOD Training
+[14:01:43] ============================================================
+[14:01:43] Parameters: 50,208
+[14:01:53]   Epoch   1 | BCE 0.2530  SupCon 5.7788 | Acc 0.9956  P 0.9928  R 0.9983  F1 0.9956  MCC 0.9911
+[14:02:07]   Epoch   5 | BCE 0.2229  SupCon 5.5823 | Acc 0.9965  P 0.9930  R 1.0000  F1 0.9965  MCC 0.9930
+[14:02:25]   Epoch  10 | BCE 0.2192  SupCon 5.5548 | Acc 0.9987  P 0.9993  R 0.9982  F1 0.9987  MCC 0.9974
+[14:02:41]   Epoch  15 | BCE 0.2191  SupCon 5.5523 | Acc 0.9993  P 0.9992  R 0.9995  F1 0.9993  MCC 0.9986
+[14:03:01]   Epoch  20 | BCE 0.2189  SupCon 5.5515 | Acc 0.9993  P 0.9992  R 0.9995  F1 0.9993  MCC 0.9987
+[14:03:18]   Epoch  25 | BCE 0.2187  SupCon 5.5510 | Acc 0.9995  P 0.9992  R 0.9997  F1 0.9995  MCC 0.9990
+[14:03:35]   Epoch  30 | BCE 0.2188  SupCon 5.5517 | Acc 0.9987  P 0.9986  R 0.9989  F1 0.9987  MCC 0.9974
+[14:03:53]   Epoch  35 | BCE 0.2188  SupCon 5.5519 | Acc 0.9990  P 0.9985  R 0.9995  F1 0.9990  MCC 0.9980
+[14:04:10]   Epoch  40 | BCE 0.2188  SupCon 5.5517 | Acc 0.9995  P 0.9992  R 0.9997  F1 0.9995  MCC 0.9990
+[14:04:28]   Epoch  45 | BCE 0.2185  SupCon 5.5494 | Acc 0.9995  P 0.9992  R 0.9998  F1 0.9995  MCC 0.9990
+[14:04:45]   Epoch  50 | BCE 0.2186  SupCon 5.5500 | Acc 0.9995  P 0.9992  R 0.9998  F1 0.9995  MCC 0.9990
+[14:05:01]   Epoch  55 | BCE 0.2186  SupCon 5.5493 | Acc 0.9995  P 0.9992  R 0.9997  F1 0.9995  MCC 0.9989
+[14:05:19]   Epoch  60 | BCE 0.2191  SupCon 5.5529 | Acc 0.9992  P 0.9986  R 0.9997  F1 0.9992  MCC 0.9983
+[14:05:36]   Epoch  65 | BCE 0.2187  SupCon 5.5502 | Acc 0.9994  P 0.9991  R 0.9998  F1 0.9994  MCC 0.9989
+[14:05:54]   Epoch  70 | BCE 0.2185  SupCon 5.5493 | Acc 0.9995  P 0.9991  R 0.9998  F1 0.9995  MCC 0.9989
+[14:06:11]   Epoch  75 | BCE 0.2186  SupCon 5.5496 | Acc 0.9991  P 0.9985  R 0.9997  F1 0.9991  MCC 0.9982
+[14:06:28]   Epoch  80 | BCE 0.2184  SupCon 5.5481 | Acc 0.9995  P 0.9992  R 0.9997  F1 0.9995  MCC 0.9989
+[14:06:46]   Epoch  85 | BCE 0.2185  SupCon 5.5490 | Acc 0.9995  P 0.9992  R 0.9998  F1 0.9995  MCC 0.9990
+[14:07:02]   Epoch  90 | BCE 0.2184  SupCon 5.5488 | Acc 0.9995  P 0.9992  R 0.9997  F1 0.9995  MCC 0.9990
+[14:07:20]   Epoch  95 | BCE 0.2185  SupCon 5.5485 | Acc 0.9995  P 0.9992  R 0.9997  F1 0.9995  MCC 0.9990
+[14:07:34]   Early stopping at epoch 99
+[14:07:34]   Best val: Acc=0.9995  F1=0.9995  MCC=0.9990
+[14:07:34] Stage 1 training time: 351.5s (5.9 min)
+[14:07:36]
+============================================================
+[14:07:36] EVAL: SENTRY — Binary Detection on Test Set
+[14:07:36] ============================================================
+[14:07:36]
+  [Default (t=0.50)]
+[14:07:36]   Accuracy:      0.9996
+[14:07:36]   Precision:     0.9992
+[14:07:36]   Recall (DR):   0.9999
+[14:07:36]   F1:            0.9996
+[14:07:36]   MCC:           0.9991
+[14:07:36]   FPR:           0.0008
+[14:07:36]   FNR:           0.0001
+[14:07:36]   TP=19,151  FP=16  FN=1  TN=19,136
+[14:07:36]
+  Threshold sweep (FPR budget = 0.01): best threshold = 0.197
+[14:07:36]
+  [Tuned (t=0.197)]
+[14:07:36]   Accuracy:      0.9967
+[14:07:36]   Precision:     0.9934
+[14:07:36]   Recall (DR):   1.0000
+[14:07:36]   F1:            0.9967
+[14:07:36]   MCC:           0.9934
+[14:07:36]   FPR:           0.0066
+[14:07:36]   FNR:           0.0000
+[14:07:36]   TP=19,152  FP=127  FN=0  TN=19,025
+[14:07:36] Stage 1 Default:  Acc=0.9996  F1=0.9996  MCC=0.9991  FPR=0.0008  FNR=0.0001
+[14:07:36] Stage 1 Tuned:    Acc=0.9967  F1=0.9967  MCC=0.9934  FPR=0.0066  FNR=0.0000  (t=0.197)
+[14:07:36]
+============================================================
+[14:07:36] ABLATION STUDY — Loss Component Contribution
+[14:07:36] ============================================================
+[14:07:36]   Metric: Recall @ FPR ≤ 1% (the gate's actual operating point)
+[14:07:39]   Full Model      | (reused) AUROC=0.9999  Rec@FPR1%=1.0000  Sep=0.6081
+[14:07:39]   Training: BCE Only ...
+>>> Global seed set to: 42 (random, numpy, torch CPU+CUDA, cuDNN deterministic)
+[14:10:19]   BCE Only        | AUROC=0.9981  Rec@FPR1%=0.9989  Sep=0.6037  (157s)
+[14:10:19]
+  Ablation Summary:
+[14:10:19]   Variant         |   AUROC  Rec@1%  FPR_def  Rec_def ScoreSep
+[14:10:19]   --------------------------------------------------------------------
+[14:10:19]   Full Model      |  0.9999  1.0000   0.0008   0.9999   0.6081
+[14:10:19]   BCE Only        |  0.9981  0.9989   0.0073   0.9989   0.6037
+[14:10:19]
+============================================================
+[14:10:19] STAGE 2 — Multi-Class Attack Classification (XGBoost)
+[14:10:19] ============================================================
+[14:10:19] Stage 2: capped majority at 25,000 -> 82,677 real samples (no SMOTE)
+[14:10:19] Attack classes (6): ['Backdoor', 'DoS', 'Exploit', 'Fuzzers', 'Generic', 'Reconnaissance']
+[14:10:19] Attack samples — Train: 82,677  Val: 19,152  Test: 19,152
+[14:10:19] Training class distribution:
+[14:10:19]   Backdoor              train=  3,260  val=  699  test=  699
+[14:10:19]   DoS                   train=  4,180  val=  895  test=  896
+[14:10:19]   Exploit               train= 25,000  val=6,793  test=6,792
+[14:10:19]   Fuzzers               train= 23,671  val=5,072  test=5,073
+[14:10:19]   Generic               train= 13,756  val=2,948  test=2,947
+[14:10:19]   Reconnaissance        train= 12,810  val=2,745  test=2,745
+[14:10:19]
+--- Stage 2: 5-fold Stratified Cross-Validation ---
+[14:11:11]   Fold 1: Acc=0.7537  F1w=0.7335  MCC=0.6795  (best_iter=193)
+[14:12:01]   Fold 2: Acc=0.7581  F1w=0.7383  MCC=0.6852  (best_iter=181)
+[14:12:56]   Fold 3: Acc=0.7602  F1w=0.7412  MCC=0.6881  (best_iter=204)
+[14:13:48]   Fold 4: Acc=0.7546  F1w=0.7340  MCC=0.6807  (best_iter=195)
+[14:14:41]   Fold 5: Acc=0.7531  F1w=0.7342  MCC=0.6789  (best_iter=187)
+[14:14:41]
+  CV Summary (5-fold):
+[14:14:41]     Accuracy:      0.7560 ± 0.0027
+[14:14:41]     F1 (weighted): 0.7363 ± 0.0030
+[14:14:41]     MCC:           0.6825 ± 0.0036
+[14:14:41]
+--- Stage 2: Training final XGBoost model ---
+[0]	validation_0-mlogloss:1.49774
+[100]	validation_0-mlogloss:0.70593
+[200]	validation_0-mlogloss:0.69252
+[295]	validation_0-mlogloss:0.69254
+[14:15:50]   Training time: 68.3s  |  Best iteration: 245
+[14:15:50]
+  Top-20 Feature Importances (gain):
+[14:15:50]     MIN_TTL                                 : 0
+[14:15:50]     MAX_TTL                                 : 0
+[14:15:50]     L7_PROTO                                : 0
+[14:15:50]     LONGEST_FLOW_PKT                        : 0
+[14:15:50]     IN_PKTS                                 : 0
+[14:15:50]     MAX_IP_PKT_LEN                          : 0
+[14:15:50]     SERVER_TCP_FLAGS                        : 0
+[14:15:50]     CLIENT_TCP_FLAGS                        : 0
+[14:15:50]     SRC_TO_DST_AVG_THROUGHPUT               : 0
+[14:15:50]     pkt_size_ratio                          : 0
+[14:15:50]     TCP_FLAGS                               : 0
+[14:15:50]     SHORTEST_FLOW_PKT                       : 0
+[14:15:50]     OUT_BYTES                               : 0
+[14:15:50]     pkt_size_range                          : 0
+[14:15:50]     bytes_ratio                             : 0
+[14:15:50]     IN_BYTES                                : 0
+[14:15:50]     byte_asymmetry                          : 0
+[14:15:50]     PROTOCOL                                : 0
+[14:15:50]     MIN_IP_PKT_LEN                          : 0
+[14:15:50]     pkts_ratio                              : 0
+[14:15:50]
+--- Stage 2: Test-Set Evaluation ---
+[14:15:51]
+  Classification Report:
+[14:15:51]                 precision    recall  f1-score   support
+
+      Backdoor       0.42      0.04      0.08       699
+           DoS       0.69      0.27      0.39       896
+       Exploit       0.82      0.73      0.77      6792
+       Fuzzers       0.66      0.95      0.78      5073
+       Generic       0.91      0.87      0.89      2947
+Reconnaissance       0.74      0.69      0.71      2745
+
+      accuracy                           0.76     19152
+     macro avg       0.71      0.59      0.60     19152
+  weighted avg       0.76      0.76      0.74     19152
+
+[14:15:51]
+============================================================
+[14:15:51] END-TO-END — Cascaded Pipeline on Full Test Set
+[14:15:51] ============================================================
+[14:15:51]   Stage 1 routed 19,167 samples to Stage 2 (19,137 classified Benign)
+[14:15:53]   Stage 2 classified 19,167 samples into 6 attack classes
+[14:15:53]
+  End-to-End Classification Report:
+[14:15:53]                 precision    recall  f1-score   support
+
+        Benign       1.00      1.00      1.00     19152
+      Backdoor       0.42      0.04      0.08       699
+           DoS       0.68      0.27      0.39       896
+       Exploit       0.82      0.73      0.77      6792
+       Fuzzers       0.66      0.95      0.78      5073
+       Generic       0.91      0.87      0.89      2947
+Reconnaissance       0.74      0.69      0.71      2745
+
+      accuracy                           0.88     38304
+     macro avg       0.75      0.65      0.66     38304
+  weighted avg       0.88      0.88      0.87     38304
+
+[14:16:06]
+============================================================
+[14:16:06] EXPORT — Combined Two-Stage Pipeline
+[14:16:06] ============================================================
+[14:16:16]   Path:       ./nfunswnb15v3/osprey_pipeline.pkl
+[14:16:16]   Raw:        26994.8 KB
+[14:16:16]   Compressed: 11688.5 KB (56.7% reduction)
+[14:16:16]
+============================================================
+[14:16:16] STAGE-WISE INFERENCE BREAKDOWN
+[14:16:16] ============================================================
+[14:16:27]   Test samples : 38,304  |  Runs: 10  |  Device: cuda
+[14:16:27]   Stage                           Avg Latency       Throughput
+[14:16:27]   --------------------------------------------------------------
+[14:16:27]   Stage 1 — SENTRY (binary)          8.57 ms     4,470,165 flows/s
+[14:16:27]   Stage 2 — XGBoost (multiclass)    1104.34 ms        34,685 flows/s
+[14:16:27]   E2E  (S1 + S2 combined)           1112.91 ms        34,418 flows/s
+[14:16:27] ============================================================
+[14:16:27]
+============================================================
+[14:16:27] PIPELINE COMPLETE — 915.5s (15.3 min)
+[14:16:27] ============================================================
+[14:16:27]   Stage 1 train:  352s  |  Stage 2 train: 68s
+[14:16:27]   CV (5-fold): Acc=0.7560±0.0027  MCC=0.6825±0.0036
+[14:16:27]
+[14:16:27]   Component                      |     Acc     F1w     MCC |    Latency     Throughput |       Size
+[14:16:27]                                  |                         |       (ms)      (flows/s) |       (KB)
+[14:16:27]   ────────────────────────────────────────────────────────────────────────────────────────────────────
+[14:16:27]   S1 SENTRY (binary)           |  0.9996  0.9996  0.9991 |        8.6      4,470,165 | (neural)
+[14:16:27]     FPR=0.0008  FNR=0.0001
+[14:16:27]   S2 XGBoost (attack-only)       |  0.7575  0.7406  0.6821 |     1104.3         34,685 |     26,790
+[14:16:27]   ────────────────────────────────────────────────────────────────────────────────────────────────────
+[14:16:27]   E2E (S1+S2)             |  0.8783  0.8699  0.8252 |     1112.9         34,418 | ─
+[14:16:27]
+============================================================
+[14:16:27] Archiving Results bundle ...
+[14:16:28] Created ZIP bundle for IEEE paper: /content/nfunswnb15v3.zip
+[14:16:28] ============================================================
